@@ -42,11 +42,15 @@ header{
   height:78px;padding:0 24px;
 }
 .burger{position:absolute;left:24px;top:50%;transform:translateY(-50%);
-  width:30px;height:20px;display:flex;flex-direction:column;justify-content:space-between;padding:3px 0}
-.burger span{display:block;height:1.4px;background:var(--ink);transition:transform .34s var(--ease),opacity .2s}
-.burger.on span:nth-child(1){transform:translateY(6.3px) rotate(45deg)}
+  width:30px;height:18px;display:block;padding:0;-webkit-appearance:none;appearance:none}
+.burger span{position:absolute;left:0;right:0;height:1.5px;background:var(--ink);
+  transition:transform .34s var(--ease),opacity .2s,top .34s var(--ease),bottom .34s var(--ease)}
+.burger span:nth-child(1){top:1px}
+.burger span:nth-child(2){top:50%;margin-top:-.75px}
+.burger span:nth-child(3){bottom:1px}
+.burger.on span:nth-child(1){top:50%;margin-top:-.75px;transform:rotate(45deg)}
 .burger.on span:nth-child(2){opacity:0}
-.burger.on span:nth-child(3){transform:translateY(-6.3px) rotate(-45deg)}
+.burger.on span:nth-child(3){bottom:50%;margin-bottom:-.75px;transform:rotate(-45deg)}
 .logo{font-family:var(--f-disp);font-size:17px;letter-spacing:.42em;font-weight:400;
   text-indent:.42em;cursor:pointer;background:none;color:var(--ink)}
 

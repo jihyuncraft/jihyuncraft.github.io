@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KIM JI HYUN — 금속공예</title>
+<meta name="description" content="KIM JI HYUN 김지현 — 금속공예 작가. Objects, Hap Series, Tangram Series.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#191919;      /* 본문 진한 먹색 — 가독성 */
+  --soft:#4d4d4d;     /* 본문 보조 */
+  --mute:#9a9a9a;     /* 라벨·캡션 */
+  --line:#e7e7e4;     /* 헤어라인 */
+  --track:.26em;
+  --maxw:1280px;
+  --f-body:"Inter","Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --f-disp:"Jost","Noto Sans KR","Inter",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--f-body);font-weight:300;line-height:1.75;
+  font-size:15px;letter-spacing:.01em;-webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
+.disp{font-family:var(--f-disp)}
+
+/* ---------- 헤더 ---------- */
+header{
+  position:sticky;top:0;z-index:40;background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  height:78px;padding:0 24px;
+}
+.burger{position:absolute;left:24px;top:50%;transform:translateY(-50%);
+  width:30px;height:20px;display:flex;flex-direction:column;justify-content:space-between;padding:3px 0}
+.burger span{display:block;height:1.4px;background:var(--ink);transition:transform .34s var(--ease),opacity .2s}
+.burger.on span:nth-child(1){transform:translateY(6.3px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-6.3px) rotate(-45deg)}
+.logo{font-family:var(--f-disp);font-size:17px;letter-spacing:.42em;font-weight:400;
+  text-indent:.42em;cursor:pointer;background:none;color:var(--ink)}
+
+/* ---------- 메뉴(슬라이드다운) ---------- */
+nav{position:fixed;top:78px;left:0;right:0;z-index:39;background:var(--bg);
+  border-bottom:1px solid var(--line);
+  max-height:0;overflow:hidden;transition:max-height .5s var(--ease);}
+nav.open{max-height:80vh;overflow:auto}
+.navinner{max-width:var(--maxw);margin:0 auto;padding:16px 24px 44px}
+.navitem,.navparent{display:flex;width:100%;align-items:center;justify-content:space-between;
+  padding:20px 2px;border-bottom:1px solid var(--line);
+  font-family:var(--f-disp);font-size:15px;letter-spacing:var(--track);text-align:left;color:var(--ink)}
+.navparent .chev{color:var(--mute);font-size:11px;transition:transform .34s var(--ease)}
+.navparent.open .chev{transform:rotate(180deg)}
+.subnav{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+.subnav.open{grid-template-rows:1fr}
+.subnav > div{overflow:hidden}
+.subnav a{display:block;padding:16px 2px 16px 22px;border-bottom:1px solid var(--line);
+  font-family:var(--f-disp);font-size:12.5px;letter-spacing:var(--track);color:var(--soft)}
+.subnav a:hover{color:var(--ink)}
+.navitem:last-child{border-bottom:0}
+
+/* ---------- 본문 ---------- */
+main{max-width:var(--maxw);margin:0 auto;padding:0 24px 120px}
+.view{display:none;animation:fade .6s var(--ease)}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-label{font-family:var(--f-disp);font-size:11px;letter-spacing:.34em;font-weight:400;
+  color:var(--mute);display:flex;align-items:baseline;gap:14px;margin:64px 0 40px}
+.section-label .num{font-size:10px;color:var(--line);letter-spacing:.1em}
+.section-label .num{color:#c9c9c6}
+
+/* 스크롤 명암 인터랙션 (공용): 가운데로 올수록 밝아지고 컬러가 됩니다 */
+.reveal img{
+  filter:grayscale(calc(1 - var(--rev,1))) brightness(calc(.52 + .48 * var(--rev,1)));
+  transition:filter .4s var(--ease);will-change:filter;
+}
+@media (hover:hover){ .tile:hover .reveal img,.sitem.reveal:hover img{filter:none} }
+@media (prefers-reduced-motion:reduce){ .reveal img{filter:none!important} html{scroll-behavior:auto} }
+
+/* HOME — 좌우로 미는 슬라이더 */
+.home{padding-top:40px}
+.carousel{position:relative;max-width:1040px;margin:0 auto;overflow:hidden}
+.track{display:flex;transition:transform .55s var(--ease);touch-action:pan-y;cursor:grab}
+.track.grabbing{cursor:grabbing;transition:none}
+.slide{min-width:100%;height:74vh;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.slide img{max-width:100%;max-height:74vh;width:auto;height:auto;object-fit:contain;
+  -webkit-user-drag:none;user-select:none;pointer-events:none}
+.c-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  font-family:var(--f-disp);font-size:30px;line-height:1;color:#bcbcbc;padding:20px 14px;transition:color .2s}
+.c-arrow:hover{color:var(--ink)}
+.c-arrow.prev{left:2px}.c-arrow.next{right:2px}
+.dots{display:flex;gap:11px;justify-content:center;margin-top:30px}
+.dot{width:7px;height:7px;border-radius:50%;background:#d6d6d2;transition:background .25s,transform .25s;padding:0}
+.dot.on{background:var(--ink);transform:scale(1.15)}
+@media(max-width:640px){.slide{height:64vh}.slide img{max-height:64vh}.c-arrow{display:none}}
+
+/* WORKS — 카테고리 탭 */
+.cattabs{display:flex;flex-wrap:wrap;gap:26px;border-bottom:1px solid var(--line);
+  padding-bottom:0;margin-bottom:40px}
+.cattabs button{font-family:var(--f-disp);font-size:12px;letter-spacing:.2em;color:var(--mute);
+  padding:0 0 16px;position:relative}
+.cattabs button.on{color:var(--ink)}
+.cattabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--ink)}
+
+/* 작품 격자 — 반응형 메이슨리 (폰 1열 / 태블릿 2열 / 노트북·데스크톱 3열, 기기 자동).
+   이미지는 원본 비율 그대로, 높이가 제각각인 사진들이 빈틈 없이 쌓입니다. */
+.grid{display:grid;grid-template-columns:1fr;grid-auto-rows:8px;column-gap:18px;row-gap:0}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr);column-gap:22px}}
+@media(min-width:1100px){.grid{grid-template-columns:repeat(3,1fr);column-gap:34px}}
+.tile{display:block;width:100%;text-align:left}
+.piece{position:relative;width:100%;background:#f7f7f5}
+.piece img{width:100%;height:auto;display:block}
+.tile .cap{margin-top:14px;font-size:12px;letter-spacing:.02em;color:var(--ink);line-height:1.5}
+.tile .cap .sub{display:block;color:var(--mute);font-size:11px;letter-spacing:.04em;margin-top:2px}
+
+/* 세로 스크롤 배치 (HAP · TANGRAM — 사진이 적은 카테고리) */
+.stack{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+.sitem{display:block;width:100%;padding:0;background:none;border:0;cursor:pointer}
+.sitem img{width:100%;height:auto;display:block}
+@media(max-width:640px){.stack{gap:48px}}
+
+/* 라이트박스 */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(255,255,255,.985);
+  display:none;flex-direction:column;align-items:center;justify-content:center;padding:44px 20px 34px;overflow-y:auto}
+.lb.on{display:flex;animation:fade .35s var(--ease)}
+.lb .frame{width:auto;max-width:min(1200px,93vw);max-height:80vh;display:flex;align-items:center;justify-content:center}
+.lb .frame img{max-width:min(1200px,93vw);max-height:80vh;width:auto;height:auto;object-fit:contain;display:block}
+.lb .cap{margin-top:28px;text-align:center;max-width:520px}
+.lb .cap em{font-family:var(--f-disp);font-style:normal;display:block;font-size:16px;letter-spacing:.05em}
+.lb .cap em span{color:var(--mute);font-size:12px;letter-spacing:.06em;margin-left:6px}
+.lb .cap .spec{display:block;color:var(--soft);font-size:12.5px;line-height:1.85;margin-top:12px;letter-spacing:.02em}
+.lb .cap .desc{display:block;color:var(--soft);font-size:13px;line-height:1.8;margin-top:16px;letter-spacing:.01em;white-space:pre-line}
+.lb .close{position:absolute;top:22px;right:26px;font-size:24px;line-height:1;color:var(--soft)}
+.lb .navbtn{position:absolute;top:50%;transform:translateY(-50%);font-size:26px;padding:16px;color:#aaa;transition:color .2s}
+.lb .navbtn:hover{color:var(--ink)}
+.lb .prev{left:8px}.lb .next{right:8px}
+.lb .counter{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-disp);font-size:11px;letter-spacing:.2em;color:var(--mute)}
+
+/* ABOUT */
+.about{max-width:820px}
+.aboutimg{margin:52px 0 40px}
+.aboutimg img{width:100%;max-width:540px;height:auto;display:block}
+.about .name{font-family:var(--f-disp);font-weight:300;font-size:32px;letter-spacing:.06em;margin-top:0}
+.about .name .en{display:block;font-size:13px;color:var(--mute);letter-spacing:.28em;margin-top:12px}
+.langtabs{display:flex;gap:24px;margin:32px 0 8px;border-bottom:1px solid var(--line)}
+.langtabs button{font-family:var(--f-disp);font-size:11px;letter-spacing:.22em;color:var(--mute);padding:0 0 14px;position:relative}
+.langtabs button.on{color:var(--ink)}
+.langtabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--ink)}
+.cv h3{font-family:var(--f-disp);font-size:11px;letter-spacing:var(--track);font-weight:400;margin:48px 0 18px;color:var(--mute)}
+.cv ul{list-style:none}
+.cv li{font-size:14px;padding:8px 0;display:flex;gap:20px;border-bottom:1px solid #f2f2f0;color:var(--soft)}
+.cv li:last-child{border-bottom:0}
+.cv li b{font-family:var(--f-disp);font-weight:400;color:var(--ink);min-width:46px}
+
+/* NEWS = 전시 아카이브 (WORKS와 같은 메이슨리 격자, 이미지 아래 전시명) */
+.ntitle{font-weight:300;font-size:15px;letter-spacing:.18em;color:var(--ink);margin-top:16px;line-height:1.6}
+.ntitle .en{display:block;font-weight:300;color:var(--mute);font-size:11px;margin-top:4px;letter-spacing:.16em}
+.emptynote{font-size:13px;color:var(--mute);letter-spacing:.02em;padding:10px 0}
+/* 전시 상세: 포스터 → 정보·글 → 전시전경 */
+.ndetail{max-width:900px;margin:0 auto}
+.nback{font-family:var(--f-disp);font-size:11px;letter-spacing:.22em;color:var(--mute);margin-bottom:30px}
+.nback:hover{color:var(--ink)}
+.nposter{margin-bottom:42px}
+.nposter img{width:100%;height:auto;display:block}
+.nhead h3{font-size:26px;font-weight:300;letter-spacing:.22em}
+.nhead .ten{display:block;font-size:14px;color:var(--soft);margin-top:10px;letter-spacing:.16em;font-weight:300}
+.nhead .en{display:block;font-size:13px;color:var(--mute);margin-top:6px;letter-spacing:.06em}
+.nhead .meta{margin-top:18px;font-size:13px;line-height:1.95;color:var(--soft)}
+.nhead .meta b{font-family:var(--f-disp);font-weight:400;color:var(--mute);display:inline-block;min-width:56px}
+.ntext{font-size:14px;line-height:1.95;color:var(--soft);max-width:680px;margin:32px 0 40px;white-space:pre-line}
+.ninfo{max-width:680px;margin:0 0 52px;border-top:1px solid var(--line)}
+.ninfo > div{display:flex;gap:18px;padding:15px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--soft);line-height:1.7}
+.ninfo b{font-family:var(--f-disp);font-weight:400;color:var(--mute);min-width:82px;letter-spacing:.1em;font-size:11px;padding-top:2px}
+.nshots{display:flex;flex-direction:column;gap:20px}
+.nshots button{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.nshots img{width:100%;height:auto;display:block}
+
+/* CONTACT */
+.contact{max-width:560px}
+.contact .row{font-size:15px;padding:20px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}
+.contact .row .k{font-family:var(--f-disp);min-width:130px;font-size:11px;letter-spacing:.2em;color:var(--mute)}
+.contact .row a:hover{border-bottom:1px solid var(--ink)}
+
+/* 하단 */
+footer{border-top:1px solid var(--line);margin-top:40px;padding:50px 24px 62px;text-align:center}
+.foot-row{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap}
+.foot-copy{font-family:var(--f-disp);font-size:13px;letter-spacing:.1em;color:var(--ink)}
+.foot-icon{display:inline-flex;color:var(--soft);transition:color .2s,transform .2s}
+.foot-icon:hover{color:var(--ink);transform:translateY(-1px)}
+.foot-icon svg{width:21px;height:21px;display:block}
+.foot-note{margin-top:24px;font-size:11px;color:var(--mute);letter-spacing:.03em;line-height:2}
+</style>
+</head>
+<body>
+
+<header>
+  <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <button class="logo" id="logo" aria-label="처음으로">KIM JI HYUN</button>
+</header>
+
+<nav id="nav">
+  <div class="navinner">
+    <div class="navgroup">
+      <button class="navparent" data-toggle="about" aria-expanded="false">ABOUT <span class="chev">&#9662;</span></button>
+      <div class="subnav" id="sub-about"><div>
+        <a href="#" data-go="about" data-lang="en">ENGLISH</a>
+        <a href="#" data-go="about" data-lang="ko">KOREAN</a>
+      </div></div>
+    </div>
+    <div class="navgroup">
+      <button class="navparent" data-toggle="works" aria-expanded="false">WORKS <span class="chev">&#9662;</span></button>
+      <div class="subnav" id="sub-works"><div>
+        <a href="#" data-go="objects">Objects</a>
+        <a href="#" data-go="hap">Hap Series</a>
+        <a href="#" data-go="tangram">Tangram Series</a>
+      </div></div>
+    </div>
+    <a class="navitem" href="#" data-go="news">NEWS</a>
+    <a class="navitem" href="#" data-go="contact">CONTACT</a>
+  </div>
+</nav>
+
+<main>
+  <!-- HOME -->
+  <section class="view on home" id="home">
+    <div class="carousel" id="carousel">
+      <div class="track" id="track">
+        <div class="slide"><img src="images/main/1.jpg" alt="KIM JI HYUN 대표 작품 1"></div>
+        <div class="slide"><img src="images/main/2.jpg" alt="KIM JI HYUN 대표 작품 2"></div>
+        <div class="slide"><img src="images/main/3.jpg" alt="KIM JI HYUN 대표 작품 3"></div>
+      </div>
+      <button class="c-arrow prev" id="cPrev" aria-label="이전 사진">&#8249;</button>
+      <button class="c-arrow next" id="cNext" aria-label="다음 사진">&#8250;</button>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- WORKS: Objects / Hap / Tangram (탭 공용) -->
+  <section class="view works" id="objects">
+    <div class="section-label"><span class="num">01</span> WORKS</div>
+    <div class="cattabs" data-tabs></div>
+    <div class="grid" id="grid-objects"></div>
+  </section>
+  <section class="view works" id="hap">
+    <div class="section-label"><span class="num">01</span> WORKS</div>
+    <div class="cattabs" data-tabs></div>
+    <div class="grid" id="grid-hap"></div>
+  </section>
+  <section class="view works" id="tangram">
+    <div class="section-label"><span class="num">01</span> WORKS</div>
+    <div class="cattabs" data-tabs></div>
+    <div class="grid" id="grid-tangram"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="view about" id="about">
+    <div class="section-label"><span class="num">02</span> ABOUT</div>
+    <div class="aboutimg"><img id="aboutImg" alt="김지현 작업실"></div>
+    <div class="name disp">김지현<span class="en">KIM JI HYUN</span></div>
+    <div class="langtabs">
+      <button id="tab-ko" class="on">KOREAN</button>
+      <button id="tab-en">ENGLISH</button>
+    </div>
+    <div class="cv" id="cvBody"></div>
+  </section>
+
+  <!-- NEWS = 전시 아카이브 -->
+  <section class="view news" id="news">
+    <div class="section-label"><span class="num">03</span> NEWS</div>
+    <div class="grid" id="newsGrid"></div>
+    <div class="ndetail" id="newsDetail" style="display:none"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="view contact" id="contact">
+    <div class="section-label"><span class="num">04</span> CONTACT</div>
+    <div class="row"><span class="k">EMAIL</span><a id="mail" href="#">&nbsp;</a></div>
+    <div class="row"><span class="k">INSTAGRAM</span><a id="insta" href="#" target="_blank" rel="noopener">&nbsp;</a></div>
+  </section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="작품 크게 보기">
+  <button class="close" id="lbClose" aria-label="닫기">&times;</button>
+  <button class="navbtn prev" id="lbPrev" aria-label="이전">&#8249;</button>
+  <button class="navbtn next" id="lbNext" aria-label="다음">&#8250;</button>
+  <div class="frame" id="lbFrame"></div>
+  <div class="cap" id="lbCap"></div>
+  <div class="counter" id="lbCount"></div>
+</div>
+
+<footer>
+  <div class="foot-row">
+    <span class="foot-copy">&copy; 2026 KIM JI HYUN</span>
+    <a class="foot-icon" id="footInsta" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a class="foot-icon" id="footMail" href="#" aria-label="이메일 보내기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2.2"/>
+        <path d="M3.6 6.6 L12 12.6 L20.4 6.6"/>
+      </svg>
+    </a>
+  </div>
+  <p class="foot-note">
+    본 사이트의 모든 작품 이미지와 글은 작가에게 저작권이 있으며 무단 사용을 금합니다.<br>
+    Unauthorized use of any image or text on this site is prohibited.
+  </p>
+</footer>
+
+<script>
+/* =========================================================
+   아래 데이터가 나중에 관리 화면(CMS)과 연결되는 자리입니다.
+   작가가 관리 화면에서 사진 추가·글 수정·순서 변경을 하면 여기에 반영됩니다.
+   ========================================================= */
+/* ===== 작품 목록 (WORKS) =====
+   각 작품마다 아래 칸을 채우면 사진을 클릭했을 때 사진 아래에 캡션으로 표시됩니다.
+   지금은 비어 있고, 나중에 깃(또는 관리 화면)에서 큰따옴표 "" 안에 적으면 됩니다.
+     title : 작품명            (예: "Ellipse 1")
+     mat   : 재료              (예: "황동, 옻칠, 단풍나무")
+     size  : 크기              (예: "190 × 230 × 170 mm")
+     year  : 제작연도          (예: 2021  ← 숫자, 따옴표 없이)
+     desc  : 설명·작가노트      (예: "…") — 없으면 빈칸으로 두세요
+   img(사진 경로)는 바꾸지 마세요. */
+/* ↓ title·mat 은 임시(대충) 캡션입니다. 나중에 실제 작품명·재료·크기·연도로 바꾸세요. */
+const WORKS = {
+  objects: [
+    {img:"images/objects/01.jpg", title:"Object 1",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/02.jpg", title:"Object 2",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/03.jpg", title:"Object 3",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/04.jpg", title:"Object 4",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/05.jpg", title:"Object 5",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/06.jpg", title:"Object 6",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/07.jpg", title:"Object 7",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/08.jpg", title:"Object 8",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/09.jpg", title:"Object 9",  mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/10.jpg", title:"Object 10", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/11.jpg", title:"Object 11", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/12.jpg", title:"Object 12", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/13.jpg", title:"Object 13", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/14.jpg", title:"Object 14", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/15.jpg", title:"Object 15", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/16.jpg", title:"Object 16", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/17.jpg", title:"Object 17", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/18.jpg", title:"Object 18", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/19.jpg", title:"Object 19", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/objects/20.jpg", title:"Object 20", mat:"황동, 옻칠", size:"", year:"", desc:""}
+  ],
+  hap: [
+    {img:"images/hap/1.jpg", title:"Ottchil Hap 1", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/2.jpg", title:"Ottchil Hap 2", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/3.jpg", title:"Ottchil Hap 3", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/4.jpg", title:"Ottchil Hap 4", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/5.jpg", title:"Ottchil Hap 5", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/6.jpg", title:"Ottchil Hap 6", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/7.jpg", title:"Ottchil Hap 7", mat:"옻칠", size:"", year:"", desc:""},
+    {img:"images/hap/8.jpg", title:"Ottchil Hap 8", mat:"옻칠", size:"", year:"", desc:""}
+  ],
+  tangram: [
+    {img:"images/tangram/1.jpg", title:"Tangram 1", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/tangram/2.jpg", title:"Tangram 2", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/tangram/3.jpg", title:"Tangram 3", mat:"황동, 옻칠", size:"", year:"", desc:""},
+    {img:"images/tangram/4.jpg", title:"Tangram 4", mat:"황동, 옻칠", size:"", year:"", desc:""}
+  ]
+};
+const CAT_META = [
+  {id:"objects", label:"OBJECTS"},
+  {id:"hap",     label:"HAP SERIES"},
+  {id:"tangram", label:"TANGRAM SERIES"}
+];
+
+const CV = {
+  ko:{
+    solo:[
+      [2022,"개인전 ‘작은건축’, 갤러리완물(Wannmul), 서울"]
+    ],
+    group:[
+      [2026,"TALENTE, 국제수공예박람회 / 뮌헨, 독일"],
+      [2026,"‘Craft in Transformation’ 두바이 한국공예 전시 / Double J Collective Gallery, 두바이"],
+      [2025,"공예트렌드페어 기획관 더 넥스트 : 내일의미래 / 코엑스 A홀, 서울"],
+      [2025,"‘세상짓기’ 청주공예비엔날레 국제공모전 수상전시 / 문화제조창 본관갤러리, 청주"],
+      [2025,"‘CRAFT ID’ 식기장 21주년 기념전시 / 갤러리완물, 서울"],
+      [2024,"‘과거와 현재’ 금속 제3그룹 40주년 기념전 / 경인미술관, 서울"],
+      [2023,"‘사물의지도’ 청주공예비엔날레 공모전 전시 / 문화제조창 본관갤러리, 청주"],
+      [2023,"‘부산행’ 금속 제3그룹 38회 정기전 / 부산중구문화원, 부산"],
+      [2021,"공예트렌드페어 창작공방관 / 코엑스 C홀, 서울"],
+      [2021,"공예트렌드페어 주제관 ‘形形色色 형형색색’ / 코엑스 C홀, 서울"],
+      [2021,"한국문화재재단 무형문화재 & 현대 공예작가 전시 / 인천공항 한국문화재재단, 인천"],
+      [2020,"콜렉트 국제 아트 페어 Collect (Wannmul) / Saatchi 갤러리, 런던"],
+      [2019,"공예트렌드페어 창작공방관 / 코엑스 A홀, 서울"]
+    ],
+    awards:[
+      [2020,"익산 공예대전 입선"],
+      [2020,"독일 뮌헨 수공예박람회(IHM) 공예트렌드페어 수상 선정작가, 독일"],
+      [2019,"청주국제공예공모전 입선"]
+    ],
+    edus:[
+      [2020,"국민대학교 일반대학원 금속공예과 졸업"],
+      [2017,"동덕여자대학교 디지털공예과 졸업"]
+    ]
+  },
+  en:{
+    solo:[
+      [2022,"Solo Exhibition ‘Small Architecture’, Gallery Wannmul, Seoul"]
+    ],
+    group:[
+      [2026,"TALENTE, International Trade Fair for Handicraft / Munich, Germany"],
+      [2026,"‘Craft in Transformation’, Korean Craft Exhibition in Dubai / Double J Collective Gallery, Dubai"],
+      [2025,"Craft Trend Fair, Special Exhibition ‘The Next : Tomorrow’s Future’ / COEX Hall A, Seoul"],
+      [2025,"‘Building Worlds’, Cheongju Craft Biennale International Competition Award Exhibition / Culture Factory Main Gallery, Cheongju"],
+      [2025,"‘CRAFT ID’, Sikgijang 21st Anniversary Exhibition / Gallery Wannmul, Seoul"],
+      [2024,"‘Past and Present’, Metal 3rd Group 40th Anniversary Exhibition / Kyung-in Museum of Fine Art, Seoul"],
+      [2023,"‘Map of Objects’, Cheongju Craft Biennale Competition / Culture Factory Main Gallery, Cheongju"],
+      [2023,"‘To Busan’, Metal 3rd Group 38th Exhibition / Busan Jung-gu Cultural Center, Busan"],
+      [2021,"Craft Trend Fair, Craft Studio Hall / COEX Hall C, Seoul"],
+      [2021,"Craft Trend Fair, Theme Exhibition ‘Hyeong-hyeong Saek-saek’ / COEX Hall C, Seoul"],
+      [2021,"Korea Cultural Heritage Foundation, Intangible Cultural Heritage & Contemporary Craft Artists / Incheon Airport, Incheon"],
+      [2020,"Collect Art Fair (Wannmul) / Saatchi Gallery, London"],
+      [2019,"Craft Trend Fair, Craft Studio Hall / COEX Hall A, Seoul"]
+    ],
+    awards:[
+      [2020,"Iksan Craft Competition, Selected"],
+      [2020,"IHM Munich (Germany), Craft Trend Fair Award-Selected Artist"],
+      [2019,"Cheongju International Craft Competition, Selected"]
+    ],
+    edus:[
+      [2020,"M.F.A Metalwork & Jewelry, Kookmin University, Seoul"],
+      [2017,"B.F.A Digital Crafts, Dongduk Women’s University, Seoul"]
+    ]
+  }
+};
+const CV_LABELS = {
+  ko:{solo:"개인전", group:"단체전", awards:"수상", edus:"학력"},
+  en:{solo:"SOLO EXHIBITIONS", group:"GROUP EXHIBITIONS", awards:"AWARD", edus:"EDUCATION"}
+};
+const CV_ORDER = ['solo','group'];  /* 수상·학력은 표시하지 않음 (개인전·단체전만) */
+/* ABOUT 이름 위 이미지 (한글/영문 각각 — 영문은 나중에 다른 이미지로 교체 가능) */
+const ABOUT_IMG = {ko:"images/about/ko.jpg", en:"images/about/en.jpg"};
+
+/* ===== NEWS = 전시 아카이브 =====
+   poster: 포스터(격자 대표) / title·sub: 전시명 / period·closed·hours·venue: 전시 정보
+   text: 소개 글 / photos: 전시 전경(순서대로, 상세에서 스크롤 내리면 보임) */
+const NEWS = [
+  {
+    poster:"images/news/poster.jpg",
+    title:"작은건축",
+    titleEn:"Small Architecture",
+    sub:"김지현 개인전 · The First Solo Exhibition",
+    period:"2022.11.30 (수) – 2022.12.13 (화)",
+    closed:"일요일, 월요일 휴무",
+    hours:"13:00 – 18:30",
+    venue:"갤러리 완물, 서울 강남구 삼성로141길 9, 2층",
+    text:"나는 단순한 건축 앞에 놓여지는 것이 좋다. 크게 한 바퀴를 돌며 정면에서 볼 수 없었던 낯선 곳을 발견하고 형태들의 관계를 관찰한다. 직선의 도로와 둥글게 만나는 하얀 벽, 옆으로 긴 연속창, 공간감이 느껴지는 필로티, 공중을 가로지르는 파인더. 그 공간에 대한 인상을 내 것으로 흡수한다. 그렇게 모인 기억들을 단순한 기하형태로 그려내며 공간감 표현이라는 범주 안에서 기를 제작하였다.",
+    photos:["images/news/1.jpg","images/news/2.jpg","images/news/3.jpg","images/news/4.jpg","images/news/5.jpg","images/news/6.jpg"]
+  }
+];
+const CONTACT = {emailUser:"jihyun157", emailDomain:"naver.com", insta:"https://www.instagram.com/j.i__h", instaHandle:"@j.i__h"};
+
+/* =================== 렌더 =================== */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+/* 카테고리 탭 (WORKS 각 화면 상단) */
+function buildTabs(){
+  $$('.cattabs[data-tabs]').forEach(box=>{
+    box.innerHTML = CAT_META.map(c=>`<button data-go="${c.id}">${c.label}</button>`).join('');
+  });
+}
+function markTabs(active){
+  $$('.cattabs[data-tabs] button').forEach(b=>b.classList.toggle('on', b.dataset.go===active));
+}
+
+/* 작품 캡션 조립 (비어 있으면 아무것도 안 보임) */
+function capHtml(w){
+  if(!w.title && !w.mat && !w.size && !w.year && !w.desc) return '';
+  const spec=[w.mat, w.size, w.year].filter(v=>v!=='' && v!=null).join('<br>');
+  return (w.title?`<em>${w.title}</em>`:'')
+       + (spec?`<span class="spec">${spec}</span>`:'')
+       + (w.desc?`<span class="desc">${w.desc}</span>`:'');
+}
+/* 라이트박스용 목록 (사진 + 캡션) */
+function lbDataFor(cat){ return WORKS[cat].map(w=>({frame:`<img src="${w.img}" alt="${w.title||''}">`, cap:capHtml(w)})); }
+
+/* 메이슨리: 각 타일이 이미지 높이만큼 격자 행(row)을 차지하도록 계산 */
+function spanTile(t){
+  const g=t.parentElement; if(!g || !g.classList.contains('grid'))return;
+  const cs=getComputedStyle(g);
+  const rowH=parseFloat(cs.gridAutoRows)||8;
+  const vGap=parseFloat(cs.columnGap)||24;
+  /* 이미지(+전시명) 실제 높이로 계산 — 타일이 스팬에 제한돼도 이미지 자체 높이는 정확 */
+  let h=0;
+  const img=t.querySelector('img'); if(img) h+=img.getBoundingClientRect().height;
+  const title=t.querySelector('.ntitle'); if(title) h+=title.getBoundingClientRect().height+14;
+  if(h>0) t.style.gridRowEnd='span '+Math.max(1,Math.ceil((h+vGap)/rowH));
+}
+function layoutMasonry(){ document.querySelectorAll('.grid .tile').forEach(spanTile); }
+
+/* OBJECTS · HAP · TANGRAM — 반응형 메이슨리 격자 */
+function buildGrid(cat){
+  const box=document.getElementById('grid-'+cat), data=lbDataFor(cat);
+  box.innerHTML='';
+  WORKS[cat].forEach((w,i)=>{
+    const b=document.createElement('button'); b.className='tile';
+    b.innerHTML=`<div class="piece reveal"><img src="${w.img}" alt="${w.title||('작품 '+(i+1))}" loading="lazy"></div>`;
+    b.addEventListener('click',()=>openLb(data,i));
+    b.querySelector('img').addEventListener('load',()=>spanTile(b));
+    box.appendChild(b);
+  });
+}
+buildTabs();
+buildGrid('objects');
+buildGrid('hap');
+buildGrid('tangram');
+
+/* ABOUT */
+function renderCV(lang){
+  const data=CV[lang], lab=CV_LABELS[lang];
+  const row=([y,t])=>`<li><b>${y}</b><span>${t}</span></li>`;
+  const block=k=> data[k]&&data[k].length ? `<h3>${lab[k]}</h3><ul>${data[k].map(row).join('')}</ul>` : '';
+  $('#cvBody').innerHTML=CV_ORDER.map(block).join('');
+  const ai=$('#aboutImg'); if(ai){ ai.onerror=()=>{ai.style.display='none';}; ai.style.display=''; ai.src=ABOUT_IMG[lang]; }
+  $('#tab-ko').classList.toggle('on', lang==='ko');
+  $('#tab-en').classList.toggle('on', lang==='en');
+}
+function setAboutLang(l){ renderCV(l); }
+setAboutLang('ko');
+$('#tab-ko').onclick=()=>setAboutLang('ko');
+$('#tab-en').onclick=()=>setAboutLang('en');
+
+/* NEWS = 전시 아카이브 (격자 → 상세) */
+const newsGrid=$('#newsGrid'), newsDetail=$('#newsDetail');
+function renderNews(){
+  if(!NEWS.length){ newsGrid.innerHTML=`<p class="emptynote">등록된 전시가 아직 없습니다.</p>`; return; }
+  newsGrid.innerHTML='';
+  NEWS.forEach((n,i)=>{
+    const b=document.createElement('button'); b.className='tile';
+    b.innerHTML=`<div class="piece"><img src="${n.poster}" alt="${n.title}" loading="lazy"></div>
+      <div class="ntitle">${n.title}${n.titleEn?`<span class="en">${n.titleEn}</span>`:''}</div>`;
+    b.addEventListener('click',()=>openNews(i));
+    b.querySelector('img').addEventListener('load',()=>spanTile(b));
+    newsGrid.appendChild(b);
+  });
+}
+function openNews(i){
+  const n=NEWS[i];
+  const shotsLb=(n.photos||[]).map(p=>({frame:`<img src="${p}" alt="">`, cap:''}));
+  const shots=(n.photos||[]).map((p,k)=>`<button data-shot="${k}"><img src="${p}" alt="전시 전경 ${k+1}" loading="lazy"></button>`).join('');
+  newsDetail.innerHTML=`
+    <button class="nback" id="nback">← NEWS</button>
+    <div class="nposter"><img src="${n.poster}" alt="${n.title} 포스터"></div>
+    <div class="nhead">
+      <h3>${n.title}</h3>
+      ${n.titleEn?`<div class="ten">${n.titleEn}</div>`:''}
+      ${n.sub?`<span class="en">${n.sub}</span>`:''}
+    </div>
+    ${n.text?`<div class="ntext">${n.text}</div>`:''}
+    <div class="ninfo">
+      ${n.period?`<div><b>전시일</b><span>${n.period}${n.closed?`<br>${n.closed}`:''}</span></div>`:''}
+      ${n.hours?`<div><b>관람시간</b><span>${n.hours}</span></div>`:''}
+      ${n.venue?`<div><b>전시장</b><span>${n.venue}</span></div>`:''}
+    </div>
+    ${shots?`<div class="nshots">${shots}</div>`:''}`;
+  newsGrid.style.display='none';
+  newsDetail.style.display='block';
+  $('#nback').onclick=closeNews;
+  newsDetail.querySelectorAll('[data-shot]').forEach(btn=>btn.addEventListener('click',()=>openLb(shotsLb,+btn.dataset.shot)));
+  window.scrollTo(0,0);
+  requestAnimationFrame(updateReveal);
+}
+function closeNews(){ newsDetail.style.display='none'; newsGrid.style.display=''; requestAnimationFrame(()=>{ updateReveal(); layoutMasonry(); }); }
+renderNews();
+
+/* CONTACT + 하단 인스타 (이메일은 조각으로 합쳐 스팸 방지) */
+const mailAddr=CONTACT.emailUser+'@'+CONTACT.emailDomain;
+$('#mail').textContent=mailAddr; $('#mail').href='mail'+'to:'+mailAddr;
+$('#insta').textContent=CONTACT.instaHandle; $('#insta').href=CONTACT.insta;
+$('#footInsta').href=CONTACT.insta;
+$('#footMail').href='mail'+'to:'+mailAddr;
+
+/* =================== 메뉴 / 화면 전환 =================== */
+const burger=$('#burger'), nav=$('#nav');
+burger.addEventListener('click',()=>{
+  const on=nav.classList.toggle('open');
+  burger.classList.toggle('on',on);
+  burger.setAttribute('aria-expanded',on);
+});
+function closeMenu(){ nav.classList.remove('open'); burger.classList.remove('on'); burger.setAttribute('aria-expanded',false); }
+
+function showView(id){
+  $$('.view').forEach(v=>v.classList.remove('on'));
+  const el=document.getElementById(id); if(el) el.classList.add('on');
+  if(['objects','hap','tangram'].includes(id)) markTabs(id);
+  if(id==='news') closeNews();
+  closeMenu(); window.scrollTo(0,0);
+  requestAnimationFrame(()=>{ updateReveal(); layoutMasonry(); });
+}
+$$('.navparent').forEach(p=>{
+  p.addEventListener('click',()=>{
+    const sub=document.getElementById('sub-'+p.dataset.toggle);
+    const on=sub.classList.toggle('open'); p.classList.toggle('open',on);
+    p.setAttribute('aria-expanded',on);
+  });
+});
+document.addEventListener('click',e=>{
+  const go=e.target.closest('[data-go]'); if(!go)return;
+  e.preventDefault();
+  if(go.dataset.lang) setAboutLang(go.dataset.lang);
+  showView(go.dataset.go);
+});
+$('#logo').addEventListener('click',()=>showView('home'));
+
+/* =================== 스크롤 명암 인터랙션 =================== */
+const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+function updateReveal(){
+  if(reduce) return;
+  const vh=window.innerHeight, vc=vh/2, span=vh*0.62;
+  $$('.reveal').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.bottom<-40 || r.top>vh+40){ return; }
+    const center=r.top+r.height/2;
+    const t=Math.max(0, 1-Math.abs(center-vc)/span);
+    el.style.setProperty('--rev', t.toFixed(3));
+  });
+}
+let ticking=false;
+function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(()=>{ updateReveal(); ticking=false; }); } }
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', ()=>{ onScroll(); layoutMasonry(); });
+window.addEventListener('load', ()=>{ updateReveal(); layoutMasonry(); });
+updateReveal();
+
+/* =================== 라이트박스 =================== */
+const lb=$('#lb'), lbFrame=$('#lbFrame'), lbCap=$('#lbCap'), lbCount=$('#lbCount');
+let lbList=[], lbIdx=0;
+function lbRender(){ const it=lbList[lbIdx]; if(!it)return; lbFrame.innerHTML=it.frame; lbCap.innerHTML=it.cap||'';
+  lbCount.textContent=(lbIdx+1)+' / '+lbList.length; }
+function openLb(list,i){ if(!list||!list.length)return; lbList=list; lbIdx=(i+list.length)%list.length; lbRender(); lb.classList.add('on'); }
+function lbStep(d){ if(!lbList.length)return; lbIdx=(lbIdx+d+lbList.length)%lbList.length; lbRender(); }
+function lbClose(){ lb.classList.remove('on'); }
+$('#lbClose').onclick=lbClose; $('#lbPrev').onclick=()=>lbStep(-1); $('#lbNext').onclick=()=>lbStep(1);
+lb.addEventListener('click',e=>{ if(e.target===lb)lbClose(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')lbClose();
+  if(e.key==='ArrowLeft')lbStep(-1);
+  if(e.key==='ArrowRight')lbStep(1);
+});
+
+/* =================== 홈 슬라이더 (좌우로 밀기 + 점) =================== */
+(function(){
+  const track=$('#track'); if(!track)return;
+  const slides=[...track.children], n=slides.length, dotsBox=$('#dots');
+  const prev=$('#cPrev'), next=$('#cNext');
+  let idx=0;
+  dotsBox.innerHTML=slides.map((_,i)=>`<button class="dot" data-i="${i}" aria-label="${i+1}번째 사진"></button>`).join('');
+  const dots=[...dotsBox.children];
+  function go(i){
+    idx=Math.max(0,Math.min(n-1,i));
+    track.style.transform=`translateX(${-idx*100}%)`;
+    dots.forEach((d,k)=>d.classList.toggle('on',k===idx));
+    prev.style.visibility = idx===0 ? 'hidden' : 'visible';
+    next.style.visibility = idx===n-1 ? 'hidden' : 'visible';
+  }
+  dots.forEach(d=>d.addEventListener('click',()=>go(+d.dataset.i)));
+  prev.addEventListener('click',()=>go(idx-1));
+  next.addEventListener('click',()=>go(idx+1));
+  /* 스와이프 / 드래그 */
+  let startX=null, dx=0;
+  track.addEventListener('pointerdown',e=>{ startX=e.clientX; dx=0; track.classList.add('grabbing'); });
+  window.addEventListener('pointermove',e=>{
+    if(startX===null)return; dx=e.clientX-startX;
+    track.style.transform=`translateX(calc(${-idx*100}% + ${dx}px))`;
+  });
+  window.addEventListener('pointerup',()=>{
+    if(startX===null)return; track.classList.remove('grabbing');
+    if(Math.abs(dx)>50) go(idx + (dx<0?1:-1)); else go(idx);
+    startX=null;
+  });
+  /* 키보드(홈 화면에서, 라이트박스 닫힌 상태) */
+  document.addEventListener('keydown',e=>{
+    if(!document.getElementById('home').classList.contains('on'))return;
+    if(lb.classList.contains('on'))return;
+    if(e.key==='ArrowLeft')go(idx-1);
+    if(e.key==='ArrowRight')go(idx+1);
+  });
+  go(0);
+})();
+</script>
+</body>
+</html>

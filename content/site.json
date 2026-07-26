@@ -8,42 +8,266 @@
   },
   "works": {
     "objects": [
-      { "img": "/images/objects/01.jpg", "title": "Object 1", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/02.jpg", "title": "Object 2", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/03.jpg", "title": "Object 3", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/04.jpg", "title": "Object 4", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/05.jpg", "title": "Object 5", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/06.jpg", "title": "Object 6", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/07.jpg", "title": "Object 7", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/08.jpg", "title": "Object 8", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/09.jpg", "title": "Object 9", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/10.jpg", "title": "Object 10", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/11.jpg", "title": "Object 11", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/12.jpg", "title": "Object 12", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/13.jpg", "title": "Object 13", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/14.jpg", "title": "Object 14", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/15.jpg", "title": "Object 15", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/16.jpg", "title": "Object 16", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/17.jpg", "title": "Object 17", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/18.jpg", "title": "Object 18", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/19.jpg", "title": "Object 19", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/objects/20.jpg", "title": "Object 20", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" }
+      {
+        "img": "/images/objects/01.jpg",
+        "title": "테스트1",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/02.jpg",
+        "title": "Object 2",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/03.jpg",
+        "title": "Object 3",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/04.jpg",
+        "title": "Object 4",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/05.jpg",
+        "title": "Object 5",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/06.jpg",
+        "title": "Object 6",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/07.jpg",
+        "title": "Object 7",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/08.jpg",
+        "title": "Object 8",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/09.jpg",
+        "title": "Object 9",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/10.jpg",
+        "title": "Object 10",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/11.jpg",
+        "title": "Object 11",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/12.jpg",
+        "title": "Object 12",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/13.jpg",
+        "title": "Object 13",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/14.jpg",
+        "title": "Object 14",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/15.jpg",
+        "title": "Object 15",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/16.jpg",
+        "title": "Object 16",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/17.jpg",
+        "title": "Object 17",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/18.jpg",
+        "title": "Object 18",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/19.jpg",
+        "title": "Object 19",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/objects/20.jpg",
+        "title": "Object 20",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      }
     ],
     "hap": [
-      { "img": "/images/hap/1.jpg", "title": "Ottchil Hap 1", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/2.jpg", "title": "Ottchil Hap 2", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/3.jpg", "title": "Ottchil Hap 3", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/4.jpg", "title": "Ottchil Hap 4", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/5.jpg", "title": "Ottchil Hap 5", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/6.jpg", "title": "Ottchil Hap 6", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/7.jpg", "title": "Ottchil Hap 7", "mat": "옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/hap/8.jpg", "title": "Ottchil Hap 8", "mat": "옻칠", "size": "", "year": "", "desc": "" }
+      {
+        "img": "/images/hap/1.jpg",
+        "title": "Ottchil Hap 1",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/2.jpg",
+        "title": "Ottchil Hap 2",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/3.jpg",
+        "title": "Ottchil Hap 3",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/4.jpg",
+        "title": "Ottchil Hap 4",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/5.jpg",
+        "title": "Ottchil Hap 5",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/6.jpg",
+        "title": "Ottchil Hap 6",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/7.jpg",
+        "title": "Ottchil Hap 7",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/hap/8.jpg",
+        "title": "Ottchil Hap 8",
+        "mat": "옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      }
     ],
     "tangram": [
-      { "img": "/images/tangram/1.jpg", "title": "Tangram 1", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/tangram/2.jpg", "title": "Tangram 2", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/tangram/3.jpg", "title": "Tangram 3", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" },
-      { "img": "/images/tangram/4.jpg", "title": "Tangram 4", "mat": "황동, 옻칠", "size": "", "year": "", "desc": "" }
+      {
+        "img": "/images/tangram/1.jpg",
+        "title": "Tangram 1",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/tangram/2.jpg",
+        "title": "Tangram 2",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/tangram/3.jpg",
+        "title": "Tangram 3",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      },
+      {
+        "img": "/images/tangram/4.jpg",
+        "title": "Tangram 4",
+        "mat": "황동, 옻칠",
+        "size": "",
+        "year": "",
+        "desc": ""
+      }
     ]
   },
   "news": {
@@ -75,42 +299,126 @@
     "cv": {
       "ko": {
         "solo": [
-          { "year": 2022, "text": "개인전 ‘작은건축’, 갤러리완물(Wannmul), 서울" }
+          {
+            "year": 2022,
+            "text": "개인전 ‘작은건축’, 갤러리완물(Wannmul), 서울"
+          }
         ],
         "group": [
-          { "year": 2026, "text": "TALENTE, 국제수공예박람회 / 뮌헨, 독일" },
-          { "year": 2026, "text": "‘Craft in Transformation’ 두바이 한국공예 전시 / Double J Collective Gallery, 두바이" },
-          { "year": 2025, "text": "공예트렌드페어 기획관 더 넥스트 : 내일의미래 / 코엑스 A홀, 서울" },
-          { "year": 2025, "text": "‘세상짓기’ 청주공예비엔날레 국제공모전 수상전시 / 문화제조창 본관갤러리, 청주" },
-          { "year": 2025, "text": "‘CRAFT ID’ 식기장 21주년 기념전시 / 갤러리완물, 서울" },
-          { "year": 2024, "text": "‘과거와 현재’ 금속 제3그룹 40주년 기념전 / 경인미술관, 서울" },
-          { "year": 2023, "text": "‘사물의지도’ 청주공예비엔날레 공모전 전시 / 문화제조창 본관갤러리, 청주" },
-          { "year": 2023, "text": "‘부산행’ 금속 제3그룹 38회 정기전 / 부산중구문화원, 부산" },
-          { "year": 2021, "text": "공예트렌드페어 창작공방관 / 코엑스 C홀, 서울" },
-          { "year": 2021, "text": "공예트렌드페어 주제관 ‘形形色色 형형색색’ / 코엑스 C홀, 서울" },
-          { "year": 2021, "text": "한국문화재재단 무형문화재 & 현대 공예작가 전시 / 인천공항 한국문화재재단, 인천" },
-          { "year": 2020, "text": "콜렉트 국제 아트 페어 Collect (Wannmul) / Saatchi 갤러리, 런던" },
-          { "year": 2019, "text": "공예트렌드페어 창작공방관 / 코엑스 A홀, 서울" }
+          {
+            "year": 2026,
+            "text": "TALENTE, 국제수공예박람회 / 뮌헨, 독일"
+          },
+          {
+            "year": 2026,
+            "text": "‘Craft in Transformation’ 두바이 한국공예 전시 / Double J Collective Gallery, 두바이"
+          },
+          {
+            "year": 2025,
+            "text": "공예트렌드페어 기획관 더 넥스트 : 내일의미래 / 코엑스 A홀, 서울"
+          },
+          {
+            "year": 2025,
+            "text": "‘세상짓기’ 청주공예비엔날레 국제공모전 수상전시 / 문화제조창 본관갤러리, 청주"
+          },
+          {
+            "year": 2025,
+            "text": "‘CRAFT ID’ 식기장 21주년 기념전시 / 갤러리완물, 서울"
+          },
+          {
+            "year": 2024,
+            "text": "‘과거와 현재’ 금속 제3그룹 40주년 기념전 / 경인미술관, 서울"
+          },
+          {
+            "year": 2023,
+            "text": "‘사물의지도’ 청주공예비엔날레 공모전 전시 / 문화제조창 본관갤러리, 청주"
+          },
+          {
+            "year": 2023,
+            "text": "‘부산행’ 금속 제3그룹 38회 정기전 / 부산중구문화원, 부산"
+          },
+          {
+            "year": 2021,
+            "text": "공예트렌드페어 창작공방관 / 코엑스 C홀, 서울"
+          },
+          {
+            "year": 2021,
+            "text": "공예트렌드페어 주제관 ‘形形色色 형형색색’ / 코엑스 C홀, 서울"
+          },
+          {
+            "year": 2021,
+            "text": "한국문화재재단 무형문화재 & 현대 공예작가 전시 / 인천공항 한국문화재재단, 인천"
+          },
+          {
+            "year": 2020,
+            "text": "콜렉트 국제 아트 페어 Collect (Wannmul) / Saatchi 갤러리, 런던"
+          },
+          {
+            "year": 2019,
+            "text": "공예트렌드페어 창작공방관 / 코엑스 A홀, 서울"
+          }
         ]
       },
       "en": {
         "solo": [
-          { "year": 2022, "text": "Solo Exhibition ‘Small Architecture’, Gallery Wannmul, Seoul" }
+          {
+            "year": 2022,
+            "text": "Solo Exhibition ‘Small Architecture’, Gallery Wannmul, Seoul"
+          }
         ],
         "group": [
-          { "year": 2026, "text": "TALENTE, International Trade Fair for Handicraft / Munich, Germany" },
-          { "year": 2026, "text": "‘Craft in Transformation’, Korean Craft Exhibition in Dubai / Double J Collective Gallery, Dubai" },
-          { "year": 2025, "text": "Craft Trend Fair, Special Exhibition ‘The Next : Tomorrow’s Future’ / COEX Hall A, Seoul" },
-          { "year": 2025, "text": "‘Building Worlds’, Cheongju Craft Biennale International Competition Award Exhibition / Culture Factory Main Gallery, Cheongju" },
-          { "year": 2025, "text": "‘CRAFT ID’, Sikgijang 21st Anniversary Exhibition / Gallery Wannmul, Seoul" },
-          { "year": 2024, "text": "‘Past and Present’, Metal 3rd Group 40th Anniversary Exhibition / Kyung-in Museum of Fine Art, Seoul" },
-          { "year": 2023, "text": "‘Map of Objects’, Cheongju Craft Biennale Competition / Culture Factory Main Gallery, Cheongju" },
-          { "year": 2023, "text": "‘To Busan’, Metal 3rd Group 38th Exhibition / Busan Jung-gu Cultural Center, Busan" },
-          { "year": 2021, "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall C, Seoul" },
-          { "year": 2021, "text": "Craft Trend Fair, Theme Exhibition ‘Hyeong-hyeong Saek-saek’ / COEX Hall C, Seoul" },
-          { "year": 2021, "text": "Korea Cultural Heritage Foundation, Intangible Cultural Heritage & Contemporary Craft Artists / Incheon Airport, Incheon" },
-          { "year": 2020, "text": "Collect Art Fair (Wannmul) / Saatchi Gallery, London" },
-          { "year": 2019, "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall A, Seoul" }
+          {
+            "year": 2026,
+            "text": "TALENTE, International Trade Fair for Handicraft / Munich, Germany"
+          },
+          {
+            "year": 2026,
+            "text": "‘Craft in Transformation’, Korean Craft Exhibition in Dubai / Double J Collective Gallery, Dubai"
+          },
+          {
+            "year": 2025,
+            "text": "Craft Trend Fair, Special Exhibition ‘The Next : Tomorrow’s Future’ / COEX Hall A, Seoul"
+          },
+          {
+            "year": 2025,
+            "text": "‘Building Worlds’, Cheongju Craft Biennale International Competition Award Exhibition / Culture Factory Main Gallery, Cheongju"
+          },
+          {
+            "year": 2025,
+            "text": "‘CRAFT ID’, Sikgijang 21st Anniversary Exhibition / Gallery Wannmul, Seoul"
+          },
+          {
+            "year": 2024,
+            "text": "‘Past and Present’, Metal 3rd Group 40th Anniversary Exhibition / Kyung-in Museum of Fine Art, Seoul"
+          },
+          {
+            "year": 2023,
+            "text": "‘Map of Objects’, Cheongju Craft Biennale Competition / Culture Factory Main Gallery, Cheongju"
+          },
+          {
+            "year": 2023,
+            "text": "‘To Busan’, Metal 3rd Group 38th Exhibition / Busan Jung-gu Cultural Center, Busan"
+          },
+          {
+            "year": 2021,
+            "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall C, Seoul"
+          },
+          {
+            "year": 2021,
+            "text": "Craft Trend Fair, Theme Exhibition ‘Hyeong-hyeong Saek-saek’ / COEX Hall C, Seoul"
+          },
+          {
+            "year": 2021,
+            "text": "Korea Cultural Heritage Foundation, Intangible Cultural Heritage & Contemporary Craft Artists / Incheon Airport, Incheon"
+          },
+          {
+            "year": 2020,
+            "text": "Collect Art Fair (Wannmul) / Saatchi Gallery, London"
+          },
+          {
+            "year": 2019,
+            "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall A, Seoul"
+          }
         ]
       }
     }

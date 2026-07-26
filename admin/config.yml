@@ -5,9 +5,9 @@ backend:
   repo: jihyuncraft/jihyuncraft.github.io
   branch: main
 
-# 관리 화면에서 새로 올리는 이미지가 저장되는 폴더
-media_folder: images/uploads
-public_folder: /images/uploads
+# 이미지 폴더 (기존 사진들이 편집화면에 그림으로 보이도록 images 전체를 지정)
+media_folder: images
+public_folder: /images
 
 # 관리 화면 UI 한국어
 locale: ko

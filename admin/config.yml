@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: jihyuncraft/jihyuncraft.github.io
+  branch: main
+
+# 관리 화면에서 새로 올리는 이미지가 저장되는 폴더
+media_folder: images/uploads
+public_folder: /images/uploads
+
+# 관리 화면 UI 한국어
+locale: ko
+
+collections:
+  - name: content
+    label: 홈페이지 내용
+    files:
+      # ---------- 하나의 파일(site.json)을 항목별로 편집 ----------
+      - name: site
+        label: 사이트 내용
+        file: content/site.json
+        fields:
+          # ===== 메인 (홈 슬라이드) =====
+          - label: 메인 (홈 슬라이드 사진)
+            name: home
+            widget: object
+            collapsed: true
+            fields:
+              - label: 슬라이드 사진
+                name: images
+                widget: list
+                label_singular: 사진
+                field: { label: 사진, name: image, widget: image }
+
+          # ===== 작품 (WORKS) =====
+          - label: 작품 (WORKS)
+            name: works
+            widget: object
+            collapsed: true
+            fields:
+              - label: OBJECTS
+                name: objects
+                widget: list
+                label_singular: 작품
+                summary: '{{fields.title}}'
+                fields: &workfields
+                  - { label: 사진, name: img, widget: image }
+                  - { label: 작품명, name: title, widget: string, required: false }
+                  - { label: 재료, name: mat, widget: string, required: false }
+                  - { label: 크기, name: size, widget: string, required: false }
+                  - { label: 연도, name: year, widget: string, required: false }
+                  - { label: 설명, name: desc, widget: text, required: false }
+              - label: HAP SERIES
+                name: hap
+                widget: list
+                label_singular: 작품
+                summary: '{{fields.title}}'
+                fields: *workfields
+              - label: TANGRAM SERIES
+                name: tangram
+                widget: list
+                label_singular: 작품
+                summary: '{{fields.title}}'
+                fields: *workfields
+
+          # ===== 전시 (NEWS) =====
+          - label: 전시 (NEWS)
+            name: news
+            widget: object
+            collapsed: true
+            fields:
+              - label: 전시 목록
+                name: items
+                widget: list
+                label_singular: 전시
+                summary: '{{fields.title}}'
+                fields:
+                  - { label: 포스터, name: poster, widget: image }
+                  - { label: 전시명 (국문), name: title, widget: string }
+                  - { label: 전시명 (영문), name: titleEn, widget: string, required: false }
+                  - { label: 부제, name: sub, widget: string, required: false }
+                  - { label: 전시일, name: period, widget: string, required: false }
+                  - { label: 휴무, name: closed, widget: string, required: false }
+                  - { label: 관람시간, name: hours, widget: string, required: false }
+                  - { label: 전시장, name: venue, widget: string, required: false }
+                  - { label: 소개 글, name: text, widget: text, required: false }
+                  - label: 전시 전경 사진
+                    name: photos
+                    widget: list
+                    label_singular: 사진
+                    field: { label: 사진, name: photo, widget: image }
+
+          # ===== 소개 (ABOUT) =====
+          - label: 소개 (ABOUT)
+            name: about
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 작업실 이미지 (한글), name: imageKo, widget: image }
+              - { label: 작업실 이미지 (영문), name: imageEn, widget: image }
+              - label: 이력 (CV)
+                name: cv
+                widget: object
+                fields:
+                  - label: 한글
+                    name: ko
+                    widget: object
+                    fields:
+                      - label: 개인전
+                        name: solo
+                        widget: list
+                        label_singular: 이력
+                        summary: '{{fields.year}} {{fields.text}}'
+                        fields: &cvfields
+                          - { label: 연도, name: year, widget: number, value_type: int }
+                          - { label: 내용, name: text, widget: string }
+                      - label: 단체전
+                        name: group
+                        widget: list
+                        label_singular: 이력
+                        summary: '{{fields.year}} {{fields.text}}'
+                        fields: *cvfields
+                  - label: 영문 (English)
+                    name: en
+                    widget: object
+                    fields:
+                      - label: Solo Exhibitions
+                        name: solo
+                        widget: list
+                        label_singular: entry
+                        summary: '{{fields.year}} {{fields.text}}'
+                        fields: *cvfields
+                      - label: Group Exhibitions
+                        name: group
+                        widget: list
+                        label_singular: entry
+                        summary: '{{fields.year}} {{fields.text}}'
+                        fields: *cvfields
+
+          # ===== 설정 (연락처) =====
+          - label: 설정 (연락처)
+            name: settings
+            widget: object
+            collapsed: true
+            fields:
+              - { label: 이메일 아이디 (@앞), name: emailUser, widget: string }
+              - { label: 이메일 도메인 (@뒤), name: emailDomain, widget: string }
+              - { label: 인스타 표시 (@아이디), name: instaHandle, widget: string }
+              - { label: 인스타 링크 (주소), name: insta, widget: string }

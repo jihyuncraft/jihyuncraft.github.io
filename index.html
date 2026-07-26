@@ -241,11 +241,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:50px 24px 62px;t
   <!-- HOME -->
   <section class="view on home" id="home">
     <div class="carousel" id="carousel">
-      <div class="track" id="track">
-        <div class="slide"><img src="images/main/1.jpg" alt="KIM JI HYUN 대표 작품 1"></div>
-        <div class="slide"><img src="images/main/2.jpg" alt="KIM JI HYUN 대표 작품 2"></div>
-        <div class="slide"><img src="images/main/3.jpg" alt="KIM JI HYUN 대표 작품 3"></div>
-      </div>
+      <div class="track" id="track"></div>
       <button class="c-arrow prev" id="cPrev" aria-label="이전 사진">&#8249;</button>
       <button class="c-arrow next" id="cNext" aria-label="다음 사진">&#8250;</button>
       <div class="dots" id="dots"></div>
@@ -329,152 +325,29 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:50px 24px 62px;t
 </footer>
 
 <script>
-/* =========================================================
-   아래 데이터가 나중에 관리 화면(CMS)과 연결되는 자리입니다.
-   작가가 관리 화면에서 사진 추가·글 수정·순서 변경을 하면 여기에 반영됩니다.
-   ========================================================= */
-/* ===== 작품 목록 (WORKS) =====
-   각 작품마다 아래 칸을 채우면 사진을 클릭했을 때 사진 아래에 캡션으로 표시됩니다.
-   지금은 비어 있고, 나중에 깃(또는 관리 화면)에서 큰따옴표 "" 안에 적으면 됩니다.
-     title : 작품명            (예: "Ellipse 1")
-     mat   : 재료              (예: "황동, 옻칠, 단풍나무")
-     size  : 크기              (예: "190 × 230 × 170 mm")
-     year  : 제작연도          (예: 2021  ← 숫자, 따옴표 없이)
-     desc  : 설명·작가노트      (예: "…") — 없으면 빈칸으로 두세요
-   img(사진 경로)는 바꾸지 마세요. */
-/* ↓ title·mat 은 임시(대충) 캡션입니다. 나중에 실제 작품명·재료·크기·연도로 바꾸세요. */
-const WORKS = {
-  objects: [
-    {img:"images/objects/01.jpg", title:"Object 1",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/02.jpg", title:"Object 2",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/03.jpg", title:"Object 3",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/04.jpg", title:"Object 4",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/05.jpg", title:"Object 5",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/06.jpg", title:"Object 6",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/07.jpg", title:"Object 7",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/08.jpg", title:"Object 8",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/09.jpg", title:"Object 9",  mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/10.jpg", title:"Object 10", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/11.jpg", title:"Object 11", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/12.jpg", title:"Object 12", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/13.jpg", title:"Object 13", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/14.jpg", title:"Object 14", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/15.jpg", title:"Object 15", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/16.jpg", title:"Object 16", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/17.jpg", title:"Object 17", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/18.jpg", title:"Object 18", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/19.jpg", title:"Object 19", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/objects/20.jpg", title:"Object 20", mat:"황동, 옻칠", size:"", year:"", desc:""}
-  ],
-  hap: [
-    {img:"images/hap/1.jpg", title:"Ottchil Hap 1", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/2.jpg", title:"Ottchil Hap 2", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/3.jpg", title:"Ottchil Hap 3", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/4.jpg", title:"Ottchil Hap 4", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/5.jpg", title:"Ottchil Hap 5", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/6.jpg", title:"Ottchil Hap 6", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/7.jpg", title:"Ottchil Hap 7", mat:"옻칠", size:"", year:"", desc:""},
-    {img:"images/hap/8.jpg", title:"Ottchil Hap 8", mat:"옻칠", size:"", year:"", desc:""}
-  ],
-  tangram: [
-    {img:"images/tangram/1.jpg", title:"Tangram 1", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/tangram/2.jpg", title:"Tangram 2", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/tangram/3.jpg", title:"Tangram 3", mat:"황동, 옻칠", size:"", year:"", desc:""},
-    {img:"images/tangram/4.jpg", title:"Tangram 4", mat:"황동, 옻칠", size:"", year:"", desc:""}
-  ]
-};
+/* 사이트 내용은 content/site.json 에서 불러옵니다 (관리 화면 /admin 이 편집).
+   구조·라벨만 코드에 두고, 실제 내용(작품·전시·글·연락처)은 전부 데이터 파일에서 옵니다. */
+(async () => {
+let SITE;
+try { SITE = await (await fetch('content/site.json?_=' + Date.now())).json(); }
+catch (e) { console.error('content/site.json 을 불러오지 못했습니다.', e); return; }
+
+const WORKS = SITE.works;
+const MAIN = SITE.home.images;
 const CAT_META = [
-  {id:"objects", label:"OBJECTS"},
-  {id:"hap",     label:"HAP SERIES"},
-  {id:"tangram", label:"TANGRAM SERIES"}
+  { id: "objects", label: "OBJECTS" },
+  { id: "hap",     label: "HAP SERIES" },
+  { id: "tangram", label: "TANGRAM SERIES" }
 ];
-
-const CV = {
-  ko:{
-    solo:[
-      [2022,"개인전 ‘작은건축’, 갤러리완물(Wannmul), 서울"]
-    ],
-    group:[
-      [2026,"TALENTE, 국제수공예박람회 / 뮌헨, 독일"],
-      [2026,"‘Craft in Transformation’ 두바이 한국공예 전시 / Double J Collective Gallery, 두바이"],
-      [2025,"공예트렌드페어 기획관 더 넥스트 : 내일의미래 / 코엑스 A홀, 서울"],
-      [2025,"‘세상짓기’ 청주공예비엔날레 국제공모전 수상전시 / 문화제조창 본관갤러리, 청주"],
-      [2025,"‘CRAFT ID’ 식기장 21주년 기념전시 / 갤러리완물, 서울"],
-      [2024,"‘과거와 현재’ 금속 제3그룹 40주년 기념전 / 경인미술관, 서울"],
-      [2023,"‘사물의지도’ 청주공예비엔날레 공모전 전시 / 문화제조창 본관갤러리, 청주"],
-      [2023,"‘부산행’ 금속 제3그룹 38회 정기전 / 부산중구문화원, 부산"],
-      [2021,"공예트렌드페어 창작공방관 / 코엑스 C홀, 서울"],
-      [2021,"공예트렌드페어 주제관 ‘形形色色 형형색색’ / 코엑스 C홀, 서울"],
-      [2021,"한국문화재재단 무형문화재 & 현대 공예작가 전시 / 인천공항 한국문화재재단, 인천"],
-      [2020,"콜렉트 국제 아트 페어 Collect (Wannmul) / Saatchi 갤러리, 런던"],
-      [2019,"공예트렌드페어 창작공방관 / 코엑스 A홀, 서울"]
-    ],
-    awards:[
-      [2020,"익산 공예대전 입선"],
-      [2020,"독일 뮌헨 수공예박람회(IHM) 공예트렌드페어 수상 선정작가, 독일"],
-      [2019,"청주국제공예공모전 입선"]
-    ],
-    edus:[
-      [2020,"국민대학교 일반대학원 금속공예과 졸업"],
-      [2017,"동덕여자대학교 디지털공예과 졸업"]
-    ]
-  },
-  en:{
-    solo:[
-      [2022,"Solo Exhibition ‘Small Architecture’, Gallery Wannmul, Seoul"]
-    ],
-    group:[
-      [2026,"TALENTE, International Trade Fair for Handicraft / Munich, Germany"],
-      [2026,"‘Craft in Transformation’, Korean Craft Exhibition in Dubai / Double J Collective Gallery, Dubai"],
-      [2025,"Craft Trend Fair, Special Exhibition ‘The Next : Tomorrow’s Future’ / COEX Hall A, Seoul"],
-      [2025,"‘Building Worlds’, Cheongju Craft Biennale International Competition Award Exhibition / Culture Factory Main Gallery, Cheongju"],
-      [2025,"‘CRAFT ID’, Sikgijang 21st Anniversary Exhibition / Gallery Wannmul, Seoul"],
-      [2024,"‘Past and Present’, Metal 3rd Group 40th Anniversary Exhibition / Kyung-in Museum of Fine Art, Seoul"],
-      [2023,"‘Map of Objects’, Cheongju Craft Biennale Competition / Culture Factory Main Gallery, Cheongju"],
-      [2023,"‘To Busan’, Metal 3rd Group 38th Exhibition / Busan Jung-gu Cultural Center, Busan"],
-      [2021,"Craft Trend Fair, Craft Studio Hall / COEX Hall C, Seoul"],
-      [2021,"Craft Trend Fair, Theme Exhibition ‘Hyeong-hyeong Saek-saek’ / COEX Hall C, Seoul"],
-      [2021,"Korea Cultural Heritage Foundation, Intangible Cultural Heritage & Contemporary Craft Artists / Incheon Airport, Incheon"],
-      [2020,"Collect Art Fair (Wannmul) / Saatchi Gallery, London"],
-      [2019,"Craft Trend Fair, Craft Studio Hall / COEX Hall A, Seoul"]
-    ],
-    awards:[
-      [2020,"Iksan Craft Competition, Selected"],
-      [2020,"IHM Munich (Germany), Craft Trend Fair Award-Selected Artist"],
-      [2019,"Cheongju International Craft Competition, Selected"]
-    ],
-    edus:[
-      [2020,"M.F.A Metalwork & Jewelry, Kookmin University, Seoul"],
-      [2017,"B.F.A Digital Crafts, Dongduk Women’s University, Seoul"]
-    ]
-  }
-};
+const CV = SITE.about.cv;
 const CV_LABELS = {
-  ko:{solo:"개인전", group:"단체전", awards:"수상", edus:"학력"},
-  en:{solo:"SOLO EXHIBITIONS", group:"GROUP EXHIBITIONS", awards:"AWARD", edus:"EDUCATION"}
+  ko: { solo: "개인전", group: "단체전" },
+  en: { solo: "SOLO EXHIBITIONS", group: "GROUP EXHIBITIONS" }
 };
-const CV_ORDER = ['solo','group'];  /* 수상·학력은 표시하지 않음 (개인전·단체전만) */
-/* ABOUT 이름 위 이미지 (한글/영문 각각 — 영문은 나중에 다른 이미지로 교체 가능) */
-const ABOUT_IMG = {ko:"images/about/ko.jpg", en:"images/about/en.jpg"};
-
-/* ===== NEWS = 전시 아카이브 =====
-   poster: 포스터(격자 대표) / title·sub: 전시명 / period·closed·hours·venue: 전시 정보
-   text: 소개 글 / photos: 전시 전경(순서대로, 상세에서 스크롤 내리면 보임) */
-const NEWS = [
-  {
-    poster:"images/news/poster.jpg",
-    title:"작은건축",
-    titleEn:"Small Architecture",
-    sub:"김지현 개인전 · The First Solo Exhibition",
-    period:"2022.11.30 (수) – 2022.12.13 (화)",
-    closed:"일요일, 월요일 휴무",
-    hours:"13:00 – 18:30",
-    venue:"갤러리 완물, 서울 강남구 삼성로141길 9, 2층",
-    text:"나는 단순한 건축 앞에 놓여지는 것이 좋다. 크게 한 바퀴를 돌며 정면에서 볼 수 없었던 낯선 곳을 발견하고 형태들의 관계를 관찰한다. 직선의 도로와 둥글게 만나는 하얀 벽, 옆으로 긴 연속창, 공간감이 느껴지는 필로티, 공중을 가로지르는 파인더. 그 공간에 대한 인상을 내 것으로 흡수한다. 그렇게 모인 기억들을 단순한 기하형태로 그려내며 공간감 표현이라는 범주 안에서 기를 제작하였다.",
-    photos:["images/news/1.jpg","images/news/2.jpg","images/news/3.jpg","images/news/4.jpg","images/news/5.jpg","images/news/6.jpg"]
-  }
-];
-const CONTACT = {emailUser:"jihyun157", emailDomain:"naver.com", insta:"https://www.instagram.com/j.i__h", instaHandle:"@j.i__h"};
+const CV_ORDER = ['solo', 'group'];
+const ABOUT_IMG = { ko: SITE.about.imageKo, en: SITE.about.imageEn };
+const NEWS = SITE.news.items;
+const CONTACT = SITE.settings;
 
 /* =================== 렌더 =================== */
 const $ = s => document.querySelector(s);
@@ -535,7 +408,7 @@ buildGrid('tangram');
 /* ABOUT */
 function renderCV(lang){
   const data=CV[lang], lab=CV_LABELS[lang];
-  const row=([y,t])=>`<li><b>${y}</b><span>${t}</span></li>`;
+  const row=({year,text})=>`<li><b>${year}</b><span>${text}</span></li>`;
   const block=k=> data[k]&&data[k].length ? `<h3>${lab[k]}</h3><ul>${data[k].map(row).join('')}</ul>` : '';
   $('#cvBody').innerHTML=CV_ORDER.map(block).join('');
   const ai=$('#aboutImg'); if(ai){ ai.onerror=()=>{ai.style.display='none';}; ai.style.display=''; ai.src=ABOUT_IMG[lang]; }
@@ -669,6 +542,7 @@ document.addEventListener('keydown',e=>{
 /* =================== 홈 슬라이더 (좌우로 밀기 + 점) =================== */
 (function(){
   const track=$('#track'); if(!track)return;
+  track.innerHTML = MAIN.map(src=>`<div class="slide"><img src="${src}" alt="KIM JI HYUN"></div>`).join('');
   const slides=[...track.children], n=slides.length, dotsBox=$('#dots');
   const prev=$('#cPrev'), next=$('#cNext');
   let idx=0;
@@ -704,6 +578,7 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight')go(idx+1);
   });
   go(0);
+})();
 })();
 </script>
 </body>

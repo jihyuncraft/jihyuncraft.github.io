@@ -74,6 +74,7 @@
     "imageEn": "/images/about/en.jpg",
     "cv": {
       "ko": {
+        "statement": "",
         "solo": [
           { "year": 2022, "text": "개인전 ‘작은건축’, 갤러리완물(Wannmul), 서울" }
         ],
@@ -91,9 +92,13 @@
           { "year": 2021, "text": "한국문화재재단 무형문화재 & 현대 공예작가 전시 / 인천공항 한국문화재재단, 인천" },
           { "year": 2020, "text": "콜렉트 국제 아트 페어 Collect (Wannmul) / Saatchi 갤러리, 런던" },
           { "year": 2019, "text": "공예트렌드페어 창작공방관 / 코엑스 A홀, 서울" }
+        ],
+        "awards": [
+          { "year": 2025, "text": "청주국제공예비엔날레 입선" }
         ]
       },
       "en": {
+        "statement": "",
         "solo": [
           { "year": 2022, "text": "Solo Exhibition ‘Small Architecture’, Gallery Wannmul, Seoul" }
         ],
@@ -111,6 +116,9 @@
           { "year": 2021, "text": "Korea Cultural Heritage Foundation, Intangible Cultural Heritage & Contemporary Craft Artists / Incheon Airport, Incheon" },
           { "year": 2020, "text": "Collect Art Fair (Wannmul) / Saatchi Gallery, London" },
           { "year": 2019, "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall A, Seoul" }
+        ],
+        "awards": [
+          { "year": 2025, "text": "Cheongju International Craft Biennale, Selected" }
         ]
       }
     }

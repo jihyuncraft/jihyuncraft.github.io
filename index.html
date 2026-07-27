@@ -157,7 +157,8 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 24px 120px}
 .aboutimg img{width:100%;max-width:540px;height:auto;display:block}
 .about .name{font-family:var(--f-disp);font-weight:300;font-size:32px;letter-spacing:.06em;margin-top:0}
 .about .name .en{display:block;font-size:13px;color:var(--mute);letter-spacing:.28em;margin-top:12px}
-.langtabs{display:flex;gap:24px;margin:32px 0 8px;border-bottom:1px solid var(--line)}
+.langtabs{display:flex;gap:24px;margin:24px 0 8px;border-bottom:1px solid var(--line)}
+.cv-statement{font-size:14px;line-height:1.95;color:var(--soft);max-width:640px;white-space:pre-line;margin:8px 0 4px}
 .langtabs button{font-family:var(--f-disp);font-size:11px;letter-spacing:.22em;color:var(--mute);padding:0 0 14px;position:relative}
 .langtabs button.on{color:var(--ink)}
 .langtabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--ink)}
@@ -269,7 +270,6 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:50px 24px 62px;t
   <section class="view about" id="about">
     <div class="section-label"><span class="num">02</span> ABOUT</div>
     <div class="aboutimg"><img id="aboutImg" alt="김지현 작업실"></div>
-    <div class="name disp">김지현<span class="en">KIM JI HYUN</span></div>
     <div class="langtabs">
       <button id="tab-ko" class="on">KOREAN</button>
       <button id="tab-en">ENGLISH</button>
@@ -341,10 +341,10 @@ const CAT_META = [
 ];
 const CV = SITE.about.cv;
 const CV_LABELS = {
-  ko: { solo: "개인전", group: "단체전" },
-  en: { solo: "SOLO EXHIBITIONS", group: "GROUP EXHIBITIONS" }
+  ko: { solo: "개인전", group: "단체전", awards: "수상" },
+  en: { solo: "SOLO EXHIBITIONS", group: "GROUP EXHIBITIONS", awards: "AWARD" }
 };
-const CV_ORDER = ['solo', 'group'];
+const CV_ORDER = ['solo', 'group', 'awards'];
 const ABOUT_IMG = { ko: SITE.about.imageKo, en: SITE.about.imageEn };
 const NEWS = SITE.news.items;
 const CONTACT = SITE.settings;
@@ -410,7 +410,8 @@ function renderCV(lang){
   const data=CV[lang], lab=CV_LABELS[lang];
   const row=({year,text})=>`<li><b>${year}</b><span>${text}</span></li>`;
   const block=k=> data[k]&&data[k].length ? `<h3>${lab[k]}</h3><ul>${data[k].map(row).join('')}</ul>` : '';
-  $('#cvBody').innerHTML=CV_ORDER.map(block).join('');
+  const statement = data.statement ? `<p class="cv-statement">${data.statement}</p>` : '';
+  $('#cvBody').innerHTML=statement + CV_ORDER.map(block).join('');
   const ai=$('#aboutImg'); if(ai){ ai.onerror=()=>{ai.style.display='none';}; ai.style.display=''; ai.src=ABOUT_IMG[lang]; }
   $('#tab-ko').classList.toggle('on', lang==='ko');
   $('#tab-en').classList.toggle('on', lang==='en');

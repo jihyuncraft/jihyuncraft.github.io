@@ -107,6 +107,7 @@ collections:
                     name: ko
                     widget: object
                     fields:
+                      - { label: 소개 글, name: statement, widget: text, required: false }
                       - label: 개인전
                         name: solo
                         widget: list
@@ -121,10 +122,17 @@ collections:
                         label_singular: 이력
                         summary: '{{fields.year}} {{fields.text}}'
                         fields: *cvfields
+                      - label: 수상
+                        name: awards
+                        widget: list
+                        label_singular: 이력
+                        summary: '{{fields.year}} {{fields.text}}'
+                        fields: *cvfields
                   - label: 영문 (English)
                     name: en
                     widget: object
                     fields:
+                      - { label: 소개 글 (English), name: statement, widget: text, required: false }
                       - label: Solo Exhibitions
                         name: solo
                         widget: list
@@ -133,6 +141,12 @@ collections:
                         fields: *cvfields
                       - label: Group Exhibitions
                         name: group
+                        widget: list
+                        label_singular: entry
+                        summary: '{{fields.year}} {{fields.text}}'
+                        fields: *cvfields
+                      - label: Award
+                        name: awards
                         widget: list
                         label_singular: entry
                         summary: '{{fields.year}} {{fields.text}}'

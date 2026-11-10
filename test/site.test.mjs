@@ -47,6 +47,6 @@ test('전시 상세: 전경 한 장마다 작품 두 개, 남은 작품은 끝�
 
 import { exLangs } from '../js/exhibitions.js';
 test('전시 소개 글: 채워진 언어만, 한국어가 먼저', () => {
-  assert.deepEqual(exLangs({ text: '가', textEn: ' ', textZh: '中' }).map(l => l.code), ['ko', 'zh-Hans']);
+  assert.deepEqual(exLangs({ text: '가', textEn: 'a', textJa: '日' }).map(l => l.code), ['ko', 'en']);
   assert.deepEqual(exLangs({}), []);
 });

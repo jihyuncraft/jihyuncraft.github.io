@@ -15,8 +15,6 @@ export const CV_LABELS = {
 
 /* 전시 소개 글 언어: [언어 코드, site.json 항목, 버튼 글자]. 글이 채워진 언어만 버튼이 나온다 */
 export const EX_LANGS = [
-  ['ko', 'text', '한국어'],
-  ['en', 'textEn', 'English'],
-  ['ja', 'textJa', '日本語'],
-  ['zh-Hans', 'textZh', '中文']
+  ['ko', 'text', 'KR'],
+  ['en', 'textEn', 'EN']
 ];

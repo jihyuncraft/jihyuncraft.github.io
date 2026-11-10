@@ -106,7 +106,6 @@ html.js .fi.in{opacity:1;transform:none}
 .langs button.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--lacquer);text-underline-offset:5px}
 .langs + .text{margin-top:0}
 .langs{flex-wrap:wrap;gap:0 20px}
-:lang(ja),:lang(zh-Hans){word-break:normal;line-break:strict}
 
 /* ---------- HOME: 도면 선이 그려지고, 그 위에 작품 사진이 차례로 바뀐다 ---------- */
 .home{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg)}   /* 바탕색이 여기 있어야 곱하기가 먹는다 */

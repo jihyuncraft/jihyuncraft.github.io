@@ -1,4 +1,4 @@
-/* EXHIBITIONS: 목록(구분 탭, 사진은 원래 비율)과 상세(대표 이미지 → 정보 → 소개 글 한국어/English/日本語/中文 → 포스터 → 전경 + 선택 작품 액자). */
+/* EXHIBITIONS: 목록(구분 탭, 사진은 원래 비율)과 상세(대표 이미지 → 정보 → 소개 글 KR/EN → 포스터 → 전경 + 선택 작품 액자). */
 import { $, esc, img, paras, yearOf } from './util.js';
 import { TYPE_EN, EX_LANGS } from './constants.js';
 import { reveal } from './reveal.js';

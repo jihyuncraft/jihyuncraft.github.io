@@ -96,8 +96,6 @@ collections:
                   - { label: 목록에 보일 장소, name: place, widget: string, required: false, hint: '예: 갤러리 완물, 서울. 비우면 전시장을 그대로 씁니다.' }
                   - { label: 소개 글 (한국어), name: text, widget: text, required: false }
                   - { label: 소개 글 (영문), name: textEn, widget: text, required: false, hint: 채운 언어만 상세 화면에 언어 버튼이 생깁니다. }
-                  - { label: 소개 글 (일본어), name: textJa, widget: text, required: false }
-                  - { label: 소개 글 (중국어), name: textZh, widget: text, required: false }
                   - label: 전시 전경 사진
                     name: photos
                     widget: list

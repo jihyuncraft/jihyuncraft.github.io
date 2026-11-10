@@ -15,7 +15,9 @@
         "size": "H17.5 x 35 x 14.5 cm",
         "year": "2025",
         "desc": "",
-        "images": []
+        "images": [
+          "/images/objects/01-2.jpg"
+        ]
       },
       {
         "img": "/images/objects/02.jpg",
@@ -60,7 +62,9 @@
         "size": "350x145x175mm",
         "year": "2026(re)",
         "desc": "",
-        "images": []
+        "images": [
+          "/images/objects/06-1.jpg"
+        ]
       },
       {
         "img": "/images/objects/07.jpg",
@@ -159,7 +163,9 @@
         "size": "H20 x 22 x 22 cm",
         "year": "2019",
         "desc": "",
-        "images": []
+        "images": [
+          "/images/objects/17-2.jpg"
+        ]
       },
       {
         "img": "/images/objects/18.jpg",
@@ -177,7 +183,10 @@
         "size": "H12 x 27 x 27 cm",
         "year": "2018",
         "desc": "",
-        "images": []
+        "images": [
+          "/images/objects/19-1.jpg",
+          "/images/objects/19-2.jpg"
+        ]
       },
       {
         "img": "/images/objects/20.jpg",
@@ -186,7 +195,9 @@
         "size": "H9 x 40 x 17 cm",
         "year": "2018",
         "desc": "",
-        "images": []
+        "images": [
+          "/images/objects/20-1.jpg"
+        ]
       }
     ],
     "hap": [
@@ -221,7 +232,8 @@
         "desc": "",
         "images": [
           "/images/hap/7.jpg",
-          "/images/hap/8.jpg"
+          "/images/hap/8.jpg",
+          "/images/hap/9.jpg"
         ]
       }
     ],
@@ -314,7 +326,7 @@
         "works": []
       },
       {
-        "poster": "/images/1.Craft_in_Transformation_SNS Image(피드용) (1).jpg",
+        "poster": "/images/dubai-2026/poster.jpg",
         "title": "Craft in Transformation",
         "titleEn": "",
         "sub": "",
@@ -324,24 +336,36 @@
         "venue": "",
         "text": "",
         "photos": [
-          "/images/KakaoTalk_20260816_174243851.jpg",
-          "/images/KakaoTalk_20260816_174243851_01.jpg",
-          "/images/KakaoTalk_20260816_174243851_03.jpg",
-          "/images/KakaoTalk_20260816_174243851_02.jpg",
-          "/images/KakaoTalk_20260816_174243851_06.jpg",
-          "/images/KakaoTalk_20260816_174243851_09.jpg",
-          "/images/KakaoTalk_20260816_174243851_07.jpg",
-          "/images/KakaoTalk_20260816_174243851_08.jpg",
-          "/images/오프닝-14.png의 사본.png",
-          "/images/전시 전경-6.jpg의 사본.jpg",
-          "/images/전시 전경-19.jpg의 사본.jpg"
+          "/images/dubai-2026/01.jpg",
+          "/images/dubai-2026/02.jpg",
+          "/images/dubai-2026/03.jpg",
+          "/images/dubai-2026/04.jpg",
+          "/images/dubai-2026/05.jpg",
+          "/images/dubai-2026/06.jpg",
+          "/images/dubai-2026/07.jpg",
+          "/images/dubai-2026/08.jpg",
+          "/images/dubai-2026/09.jpg",
+          "/images/dubai-2026/10.jpg",
+          "/images/dubai-2026/11.jpg",
+          "/images/dubai-2026/12.jpg",
+          "/images/dubai-2026/13.jpg",
+          "/images/dubai-2026/14.jpg"
         ],
         "type": "단체전",
         "year": "2026",
         "place": "Double J Collective Gallery, 두바이",
         "cover": "",
         "textEn": "",
-        "works": []
+        "works": [
+          {
+            "img": "/images/dubai-2026/work-1.jpg",
+            "cap": "horizon, 2021\nBrass, Maple wood, Ottchil-natural lacquer\nH31 x 25 x 25 cm"
+          },
+          {
+            "img": "/images/dubai-2026/work-2.jpg",
+            "cap": ""
+          }
+        ]
       }
     ]
   },

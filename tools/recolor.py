@@ -1,5 +1,6 @@
 """사이트 사진을 작가 원본에서 다시 만든다: 원본의 색 정보(ICC)를 읽어 sRGB로 바꾼 뒤 지금 크기로 줄인다.
-원본과 사이트 사진은 작은 흑백 축소본을 비교해 짝짓는다. 인자 --apply 가 없으면 짝만 보여 준다."""
+원본과 사이트 사진은 작은 흑백 축소본을 비교해 짝짓는다. 인자 --apply 가 없으면 짝만 보여 준다.
+실행: python tools/recolor.py "원본사진.zip" [--apply]"""
 import io, sys, zipfile, warnings
 from pathlib import Path
 from PIL import Image, ImageCms, ImageChops, ImageStat
@@ -7,8 +8,8 @@ from PIL import Image, ImageCms, ImageChops, ImageStat
 warnings.simplefilter('ignore')
 Image.MAX_IMAGE_PIXELS = None
 sys.stdout.reconfigure(encoding='utf-8')
-REPO = Path(r"C:\Users\USER\Desktop\AI 툴\공용 AI툴 자료\프로젝트\jihyuncraft.github.io")
-ZIP = Path(r"C:\Users\USER\Desktop\김지현 웹사이트 폴더\3_작가 제공 원본 사진 (홈페이지).zip")
+REPO = Path(__file__).resolve().parent.parent
+ZIP = Path(next(a for a in sys.argv[1:] if not a.startswith('--')))   # 작가 원본 사진 zip 경로
 SRGB = ImageCms.createProfile('sRGB')
 APPLY = '--apply' in sys.argv
 N = 32

@@ -73,7 +73,7 @@ export function renderExhibition(root, n, gallery, next) {
     ${hasKo || hasEn ? `<div class="text" id="exText" lang="${hasKo ? 'ko' : 'en'}">${paras(hasKo ? n.text : n.textEn)}</div>` : ''}
     ${posterBtn}
     ${body ? `<div class="shots">${body}</div>` : ''}
-    ${next ? `<a class="next" href="/exhibitions/${next._i}/"><span>NEXT EXHIBITION</span>${esc(next.title)}</a>` : ''}`;
+    ${next ? `<a class="next" href="/exhibitions/${next._i}/"><span>Next exhibition</span>${esc(next.title)}</a>` : ''}`;
 
   root.onclick = e => {
     const lb = e.target.closest('#exLangs button');

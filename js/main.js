@@ -20,7 +20,7 @@ const home = createHome($('#v-home'), SITE.home.images);
 
 /* 메뉴 */
 $('#navSub').innerHTML = CATS.map(c => `<li><a href="/works/${c.id}/" data-k="${c.id}">${c.label}</a></li>`).join('');
-$('#cats').innerHTML = CATS.map(c => `<a href="/works/${c.id}/" data-k="${c.id}">${c.label.toUpperCase()}</a>`).join('');
+$('#cats').innerHTML = CATS.map(c => `<a href="/works/${c.id}/" data-k="${c.id}">${c.label}</a>`).join('');
 const burger = $('#burger');
 const setMenu = on => {
   document.body.classList.toggle('menu-open', on);
@@ -38,10 +38,22 @@ $('#aboutLangs').onclick = e => {
 
 /* CONTACT (이메일은 조각으로 합쳐 스팸 수집 방지) */
 const C = SITE.settings, mail = C.emailUser + '@' + C.emailDomain;
-$('#mail').textContent = mail;
-$('#insta').textContent = C.instaHandle;
+$$('#mail, #footMailText').forEach(el => { el.textContent = mail; });
+$$('#insta, #footInstaText').forEach(el => { el.textContent = C.instaHandle; });
 $$('#mail, #footMail').forEach(a => { a.href = 'mail' + 'to:' + mail; });
 $$('#insta, #footInsta').forEach(a => { a.href = C.insta; });
+
+/* 화면 이름: 브라우저 탭 제목과 본문 맨 위 제목(전시 상세는 자기 제목이 따로 있다) */
+const PAGE_NAMES = { about: 'About', exhibitions: 'Exhibitions', contact: 'Contact' };
+function setTitle(r) {
+  const name = r.view === 'works' ? CATS.find(c => c.id === r.arg).label
+    : r.view === 'exhibition' ? SITE.news.items[+r.arg]?.title
+    : PAGE_NAMES[r.view];
+  document.title = name ? `${name} — KIM JI HYUN` : 'KIM JI HYUN — 금속공예';
+  const h = $('#pageTitle');
+  h.hidden = !name || r.view === 'exhibition';
+  h.textContent = name || '';
+}
 
 /* 화면 전환 */
 const renderers = {
@@ -64,8 +76,7 @@ startRouter(r => {
   cls.toggle('in-works', r.page === 'works');
   home.play(r.view === 'home');
   renderers[r.view]?.(r);
-  const name = { works: CATS.find(c => c.id === r.arg)?.label, exhibition: SITE.news.items[+r.arg]?.title }[r.view] || (r.view === 'home' ? '' : r.page.toUpperCase());
-  document.title = name ? `${name} — KIM JI HYUN` : 'KIM JI HYUN — 금속공예';
+  setTitle(r);
 
   $$('.nav a, .cats a').forEach(a => {
     const on = a.dataset.k === r.page || (r.page === 'works' && a.dataset.k === r.arg);

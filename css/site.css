@@ -1,22 +1,30 @@
-/* KIM JI HYUN 사이트 스타일. 색·여백 값은 :root 토큰에서 바꾼다. */
+/* KIM JI HYUN 사이트 스타일.
+   순서: 토큰 → 기본 → 머리·메뉴 → 본문 공통 → 화면별 → 하단 → 크게 보기 → 화면 폭별 배치.
+   색·여백 값은 :root 토큰에서 바꾼다. */
 :root{
-  --bg:#efede7;            /* 무광 백동 판재의 따뜻한 회백색. 참고: takutagami #f1f0ec */
+  --bg:#efede7;            /* 무광 백동 판재의 따뜻한 회백색 */
   --ink:#1c1513;           /* 옻칠 검정 */
   --soft:#4a4340;
   --mute:#6b635c;          /* 바탕 대비 4.5:1 이상 */
   --lacquer:#5c1f1b;       /* 옻칠 적갈색 */
   --brass:#a48a4f;         /* 황동 */
   --ivory:#efe9dc;         /* 옻칠 위 글자 */
+  --ivory-soft:#b9afa0;    /* 옻칠 위 보조 글자 */
   --f:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
   --ease:cubic-bezier(.22,.61,.36,1);
-  --pad:max(18px,5vw);
-  --head:60px;
+  --pad:max(18px,5vw);     /* 화면 좌우 여백 */
+  --head:60px;             /* 모바일 머리 높이 */
+  --gap:56px;              /* 작품·전시 사이 간격 */
 }
+
+/* ---------- 기본 ---------- */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:clip}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:14px;line-height:1.75;
-  font-weight:400;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+  font-weight:400;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;
+  min-height:100svh;display:flex;flex-direction:column}   /* 내용이 짧아도 하단 띠가 바닥에 붙는다 */
+main{flex:1 0 auto}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -25,7 +33,7 @@ ul{list-style:none}
 ::selection{background:var(--lacquer);color:var(--ivory)}
 [hidden]{display:none!important}
 
-/* ---------- 머리: 모바일은 위쪽 한 줄, 노트북은 왼쪽에 고정 ---------- */
+/* ---------- 머리·메뉴: 모바일은 위쪽 한 줄, 노트북은 왼쪽에 고정 ---------- */
 .site{position:sticky;top:0;z-index:50;height:var(--head);padding:0 var(--pad);
   display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
 body.is-home .site{position:fixed;left:0;right:0;background:transparent}
@@ -36,18 +44,17 @@ body.is-home .site{position:fixed;left:0;right:0;background:transparent}
 body.menu-open .burger span:nth-child(1){transform:translateY(5px) rotate(45deg)}
 body.menu-open .burger span:nth-child(2){opacity:0}
 body.menu-open .burger span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
 .nav{position:fixed;inset:var(--head) 0 0 0;background:var(--bg);padding:28px var(--pad);
   opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
 body.menu-open .nav{opacity:1;visibility:visible}
 .nav > ul > li{margin-bottom:6px}
-.nav a{display:inline-flex;align-items:center;min-height:44px}
-.nav a{font-size:20px;letter-spacing:.12em;font-weight:500}
+.nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;font-size:20px;letter-spacing:.12em;font-weight:500}
 .nav .sub{margin:10px 0 4px 2px}
 .nav .sub a{font-size:15px;letter-spacing:.04em;font-weight:400;color:var(--soft);line-height:2.2}
 .nav a.on{color:var(--ink)}
 
 /* 메뉴 표시: 칠교 조각 모양, 합 안쪽 옻칠 색 */
-.nav a{position:relative}
 .nav a::before{content:"";position:absolute;left:-15px;top:50%;width:7px;height:7px;margin-top:-4px;
   background:var(--dot,var(--lacquer));opacity:0;transition:opacity .25s}
 .nav a.on::before{opacity:1}
@@ -59,26 +66,18 @@ body.menu-open .nav{opacity:1;visibility:visible}
 .nav a[data-k=hap]::before{border-radius:1.5px}
 .nav a[data-k=tangram]::before{--dot:#c79a3b;clip-path:polygon(0 100%,100% 100%,0 0)}
 
-/* 모바일 메뉴: 합 뚜껑을 열면 보이는 옻칠 안쪽 */
-@media (max-width:599px){
-  .site{transition:background .3s var(--ease),color .3s var(--ease)}
-  body.menu-open .site{background:var(--ink);color:var(--ivory)}
-  .nav{background:var(--ink);color:var(--ivory)}
-  .nav .sub a{color:#b9afa0}
-  .nav a.on{color:#fff}
-}
-
 /* 작품의 평면도(겹친 두 원통과 판). 노트북 화면 왼쪽 아래에만 둔다 */
 .plan{display:none;position:absolute;left:var(--pad);bottom:50px;width:132px;height:auto;color:var(--brass)}
-body.is-home .plan{display:none}
 
-/* ---------- 본문 ---------- */
+/* ---------- 본문 공통 ---------- */
 main{padding:8px var(--pad) 0}
 .view{animation:fade .5s var(--ease)}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.cats{display:flex;flex-wrap:wrap;gap:6px 22px;margin:4px 0 36px;font-size:12px;letter-spacing:.1em}
+.pt{font-size:28px;font-weight:300;line-height:1.3;letter-spacing:-.01em;margin:6px 0 18px}
+.cats{display:flex;flex-wrap:wrap;gap:0 20px;margin:0 0 20px;font-size:14px}
 .cats a{color:var(--mute);display:inline-flex;align-items:center;min-height:44px}
-.cats a.on{color:var(--ink)}
+.cats a.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--lacquer);text-underline-offset:6px}
+.empty{color:var(--mute)}
 
 /* 등장 효과: 스크립트가 있을 때만 숨긴다 */
 html.js .fi{opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -87,96 +86,91 @@ html.js .fi.in{opacity:1;transform:none}
 /* 사진의 흰 배경이 바탕에 스며든다(곱하기). 등장 효과 중에도 같게 보이도록 묶음에 바탕색을 둔다 */
 .ph,.slide,.g-slide{background:var(--bg)}
 .ph img,.slide img,.g-slide img{mix-blend-mode:multiply}
-
-/* 사진 위에 마우스: 투명도만 살짝 */
 .ph{display:block;width:100%;cursor:pointer}
 .ph img{width:100%;height:auto;transition:opacity .4s var(--ease)}
 @media (hover:hover){
   .ph:hover img,.hov:hover .ph img{opacity:.5}
-  .tl:hover{opacity:.5}
+  .tl:hover,.next:hover{opacity:.5}
 }
 
-/* HOME: 화면 전체에 사진, 흰 배경 사진과 바탕이 이어진다 */
+/* 목록·상세 끝에서 다음으로 이어 보기 */
+.next{display:block;font-size:16px;font-weight:500;line-height:1.6;padding:10px 0;transition:opacity .35s var(--ease)}
+.next span{display:block;font-size:13px;font-weight:400;color:var(--mute)}
+
+/* 글 */
+.text{font-size:15px;line-height:1.9;color:var(--soft)}
+.text p + p{margin-top:1.1em}
+.langs{display:flex;gap:16px;margin:30px 0 12px;font-size:13px}
+.langs button{color:var(--mute);min-height:44px;min-width:32px}
+.langs button.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--lacquer);text-underline-offset:5px}
+.langs + .text{margin-top:0}
+
+/* ---------- HOME: 화면 전체에 사진이 차례로 바뀐다 ---------- */
 .home{position:fixed;inset:0;z-index:0}
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  padding:calc(var(--head) + 12px) var(--pad) 40px;opacity:0;transition:opacity 1.2s var(--ease)}
+  padding:calc(var(--head) + 12px) var(--pad) 64px;opacity:0;transition:opacity 1.2s var(--ease)}
 .slide.on{opacity:1}
-.h-count{position:absolute;right:var(--pad);bottom:28px;z-index:1;font-size:12px;letter-spacing:.12em;color:var(--mute);font-variant-numeric:tabular-nums}
 .slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.h-bar{position:absolute;left:var(--pad);right:var(--pad);bottom:10px;z-index:1;display:flex;align-items:center;gap:16px;
+  font-size:12px;color:var(--mute)}
+.h-bar .cr{margin-right:auto}
+.h-pause{min-height:44px;min-width:44px;text-align:right}
+.h-pause:hover{color:var(--ink)}
+.h-count{font-variant-numeric:tabular-nums}
 
-/* WORKS: 한 줄로 이어지는 작품 */
-.works{display:flex;flex-direction:column;gap:80px}
-.work figcaption{margin-top:14px;font-size:12.5px;line-height:1.76;letter-spacing:.02em;color:var(--soft)}
-.work .tl{display:inline;font-size:13.5px;font-weight:500;color:var(--ink);letter-spacing:.01em;transition:opacity .35s var(--ease)}
-.work .meta{display:block}
+/* ---------- WORKS·EXHIBITIONS 목록: 한 줄에 하나씩 ---------- */
+.works,.exlist{display:flex;flex-direction:column;gap:var(--gap)}
+.work figcaption,.ex .cap{margin-top:14px;font-size:13px;line-height:1.76;color:var(--soft)}
+.work .tl,.ex .ti{display:block;font-size:15px;font-weight:500;color:var(--ink);transition:opacity .35s var(--ease)}
+.work .meta,.ex .en{display:block}
 .work .cnt{display:block;color:var(--lacquer);margin-top:4px}
-
-/* 목록·상세 끝에서 다음으로 이어 보기 */
-.next{display:block;font-size:14px;font-weight:500;line-height:1.6;padding:10px 0;transition:opacity .35s var(--ease)}
-.next span{display:block;font-size:12px;font-weight:400;letter-spacing:.12em;color:var(--mute)}
-.exd .next{margin-top:96px}
-@media (hover:hover){ .next:hover{opacity:.5} }
-
-/* EXHIBITIONS 목록: 같은 비율의 사진, 아래로 이어지는 스크롤 */
-.exlist{display:flex;flex-direction:column;gap:80px}
 .ex .frame{aspect-ratio:3/2;overflow:hidden}
-.ex .frame img{width:100%;height:100%;object-fit:cover}
-.ex .cap{margin-top:14px;font-size:12.5px;line-height:1.76;letter-spacing:.02em;color:var(--soft)}
+.ex .frame img,.pair .frame img{width:100%;height:100%;object-fit:cover}
 .ex .ty{display:block;color:var(--lacquer)}
-.ex .ti{display:block;font-size:14px;font-weight:500;color:var(--ink)}
-.ex .en{display:block}
-.empty{color:var(--mute)}
 
-/* 전시 상세 */
-.back{display:inline-flex;align-items:center;min-height:44px;font-size:12px;letter-spacing:.1em;color:var(--mute);margin-bottom:12px}
+/* ---------- 전시 상세 ---------- */
+.back{display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:var(--mute);margin-bottom:12px}
 .back:hover{color:var(--ink)}
 .exd .head{margin:22px 0 0}
-.exd .ty{color:var(--lacquer);font-size:12.5px}
-.exd h1{font-size:20px;font-weight:500;line-height:1.5;margin-top:4px;text-wrap:balance}
+.exd .ty{color:var(--lacquer);font-size:13px}
+.exd h1{font-size:22px;font-weight:500;line-height:1.5;margin-top:4px;text-wrap:balance}
 .exd .ten{font-size:14px;color:var(--soft);margin-top:2px}
 .exd .sub{font-size:13px;color:var(--soft);margin-top:6px}
 .exd .info{margin-top:18px;font-size:13px;line-height:1.9;color:var(--soft)}
-.langs{display:flex;gap:16px;margin:30px 0 12px;font-size:12px;letter-spacing:.12em}
-.langs button{color:var(--mute);min-height:44px;min-width:32px}
-.langs button.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--lacquer);text-underline-offset:5px}
-.text{font-size:15px;line-height:1.9;color:var(--soft)}
-.text p + p{margin-top:1.1em}
 .exd .text{margin-top:30px}
-.langs + .text{margin-top:0}
-.poster{width:62%;margin-top:48px}
-.shots{display:flex;flex-direction:column;gap:40px;margin-top:64px}
+.poster{width:62%;margin-top:40px}
+.shots{display:flex;flex-direction:column;gap:32px;margin-top:48px}
 .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:10%;row-gap:32px;padding:0 5%}
 .pair .frame{aspect-ratio:4/5;overflow:hidden}
-.pair .frame img{width:100%;height:100%;object-fit:cover}
 .pair .pc{margin-top:10px;font-size:12px;line-height:1.7;color:var(--soft);white-space:pre-line}
+.exd .next{margin-top:64px}
 
-/* ABOUT */
-.about .langs{margin-top:28px}
-.about h2{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--mute);margin:44px 0 14px}
+/* ---------- ABOUT ---------- */
+.about h2{font-size:15px;font-weight:600;margin:36px 0 10px}
 .about .note{max-width:640px}
 .cv ul li{display:flex;gap:18px;padding:5px 0;font-size:14px;color:var(--soft);line-height:1.7}
 .cv ul li b{flex:none;min-width:40px;font-weight:500;color:var(--ink)}
 
-/* CONTACT */
-.contact .row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;min-height:44px;font-size:15px}
-.contact .k{min-width:110px;font-size:12px;letter-spacing:.12em;color:var(--mute);padding-top:1px}
+/* ---------- CONTACT ---------- */
+.contact .row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;min-height:44px;font-size:16px}
+.contact .k{min-width:96px;font-size:13px;color:var(--mute)}
 .contact a{display:inline-flex;align-items:center;min-height:44px}
 .contact a:hover{text-decoration:underline;text-underline-offset:4px}
 
-/* 하단 */
-footer{padding:120px var(--pad) 48px;font-size:12px;color:var(--mute);line-height:1.9}
-footer .row{display:flex;align-items:center;gap:6px;margin-bottom:10px;color:var(--ink)}
-footer .row a{display:flex;align-items:center;justify-content:center;width:44px;height:44px}
-footer .row span{margin-right:8px}
-footer svg{width:19px;height:19px;display:block}
-footer a{color:var(--soft)}
-footer a:hover{color:var(--ink)}
+/* ---------- 하단: 옻칠 검정 띠에 저작권 안내와 연락처 ---------- */
+footer{margin-top:88px;padding:40px var(--pad) 44px;background:var(--ink);color:var(--ivory-soft);font-size:13px;line-height:1.9}
+footer .own{color:var(--ivory);font-weight:500}
+footer .links{display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;margin-top:14px}
+footer .links a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ivory)}
+footer .links a:hover{text-decoration:underline;text-underline-offset:4px}
+footer svg{width:18px;height:18px;flex:none}
+footer .en{margin-top:10px;font-size:12px}
 body.is-home footer{display:none}
 
-/* 크게 보기: 옆으로 넘기는 사진 */
+/* ---------- 크게 보기: 옆으로 넘기는 사진 ---------- */
 .gal{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column}
 .g-top{flex:none;height:var(--head);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad)}
-.g-count{font-size:12px;letter-spacing:.12em;color:var(--mute)}
+.g-count{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
 .g-close{width:44px;height:44px;margin-right:-12px;display:flex;align-items:center;justify-content:center}
 .g-close svg,.g-arrow svg{width:22px;height:22px}
 .g-track{flex:1;min-height:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
@@ -185,52 +179,82 @@ body.is-home footer{display:none}
 .g-slide{flex:0 0 100%;height:100%;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:0 var(--pad)}
 .g-slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .g-cap{flex:none;width:100%;max-width:680px;margin:0 auto;max-height:34svh;overflow:auto;
-  padding:18px var(--pad) calc(22px + env(safe-area-inset-bottom));font-size:12.5px;line-height:1.8;color:var(--soft)}
-.g-cap b{display:block;font-size:14px;font-weight:500;color:var(--ink)}
+  padding:18px var(--pad) calc(22px + env(safe-area-inset-bottom));font-size:13px;line-height:1.8;color:var(--soft)}
+.g-cap b{display:block;font-size:15px;font-weight:500;color:var(--ink)}
 .g-cap .text{font-size:13px;margin-top:12px}
 .g-arrow{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;display:none;align-items:center;justify-content:center;color:var(--soft)}
 .g-arrow:hover{color:var(--ink)}
 .g-prev{left:8px}.g-next{right:8px}
 @media (hover:hover) and (pointer:fine){ .gal.multi .g-arrow{display:flex} }
 
-@media (min-width:600px) and (max-width:959px){
+/* ---------- 모바일(599px 이하): 메뉴는 합 뚜껑을 열면 보이는 옻칠 안쪽 ---------- */
+@media (max-width:599px){
+  .site{transition:background .3s var(--ease),color .3s var(--ease)}
+  body.menu-open .site{background:var(--ink);color:var(--ivory)}
+  .nav{background:var(--ink);color:var(--ivory)}
+  .nav .sub a{color:var(--ivory-soft)}
+  .nav a.on{color:#fff}
+}
+
+/* ---------- 600px 이상 공통: 메뉴가 항상 보인다 ---------- */
+@media (min-width:600px){
   .burger{display:none}
   .nav{position:static;inset:auto;opacity:1;visibility:visible;background:none;padding:0}
-  .nav > ul{display:flex;gap:22px}
-  .nav > ul > li{margin:0}
   .nav a{font-size:12px;letter-spacing:.14em}
-  .nav .sub{display:none}
   body.has-view .nav a{color:var(--mute)}
   body.has-view .nav a.on{color:var(--ink)}
-  .site{height:72px}
+  .pt{font-size:34px}
 }
-/* ---------- 노트북·데스크톱: 메뉴 왼쪽, 작품 오른쪽 한 줄 ---------- */
+
+/* ---------- 태블릿(600~959px): 메뉴는 머리 오른쪽 한 줄 ---------- */
+@media (min-width:600px) and (max-width:959px){
+  .site{height:72px}
+  .nav > ul{display:flex;gap:22px}
+  .nav > ul > li{margin:0}
+  .nav .sub{display:none}
+  .work .ph img{max-height:78svh;object-fit:contain}   /* 세로 사진이 화면보다 길어지지 않게 */
+}
+
+/* ---------- 노트북·데스크톱(960px 이상): 메뉴 왼쪽, 내용은 남은 폭을 채운다 ---------- */
 @media (min-width:960px){
-  :root{--pad:7.5vw}
-  .site,body.is-home .site{position:fixed;top:0;left:0;bottom:0;right:auto;width:30vw;height:auto;
+  :root{--pad:7.5vw;--col:24vw;--gap:72px}   /* --col: 내용이 시작하는 왼쪽 선 */
+  .site,body.is-home .site{position:fixed;top:0;left:0;bottom:0;right:auto;width:var(--col);height:auto;
     padding:50px 0 0 var(--pad);display:block;background:transparent}
-  .burger{display:none}
-  .nav{position:static;inset:auto;opacity:1;visibility:visible;background:none;padding:0;margin-top:30px}
+  .nav{margin-top:30px}
   .nav > ul > li{margin-bottom:2px}
-  .nav a{min-height:0}
-  .nav a{font-size:12px;letter-spacing:.14em;line-height:2.1;transition:opacity .25s}
+  .nav a{min-height:0;line-height:2.1;transition:opacity .25s}
   .nav a:hover{opacity:.4}
-  .plan{display:block}
   .nav .sub{display:none;margin:2px 0 8px 12px}
   .nav .sub a{font-size:12px;letter-spacing:.04em;line-height:2}
   body.in-works .nav .sub{display:block}
-  body.has-view .nav a{color:var(--mute)}
-  body.has-view .nav a.on{color:var(--ink)}
-  main,footer{margin-left:50vw;width:clamp(400px,35vw,640px);padding-left:0;padding-right:0}
-  main{padding-top:50px}
-  .cats{display:none}
-  .works,.exlist{gap:112px}
-  .shots{gap:56px}
+  body:not(.is-home) .plan{display:block}
+
+  main{margin:0 var(--pad) 0 var(--col);max-width:1100px;padding:42px 0 0}
+  .pt{font-size:40px;margin:0 0 36px}
+  .cats,.back{display:none}
   .slide{padding:0}
-  .back{display:none}
-  footer{padding-top:160px}
+
+  /* 한 줄에 작품 하나: 왼쪽에 같은 크기 틀의 사진, 오른쪽 아래에 설명 */
+  .work .hov,.ex{display:grid;grid-template-columns:minmax(0,62fr) minmax(0,33fr);column-gap:5%;align-items:end}
+  .work .ph{aspect-ratio:4/3}
+  .work .ph img{height:100%;object-fit:contain}
+  .work figcaption,.ex .cap{margin:0 0 4px}
+  .work .tl,.ex .ti{font-size:17px}
+
+  .exd .head,.exd .text,.exd .langs{max-width:640px}
+  .poster{width:38%}
+  .shots{display:block;columns:2;column-gap:28px;margin-top:56px}
+  .shots > *{break-inside:avoid;margin-bottom:28px}
+  .pair{padding:0;column-gap:8%}
+
+  .about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:6%;align-items:start}
+  .about #aboutImg{grid-row:1 / span 2;position:sticky;top:50px}
+  .about .langs{margin-top:0}
+
+  footer{margin-top:120px;padding:48px var(--pad) 52px var(--col)}
   .g-slide{padding:0 9vw}
 }
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html.js .fi{opacity:1;transform:none}

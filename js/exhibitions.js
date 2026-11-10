@@ -68,13 +68,12 @@ export function renderExhibition(root, n, gallery, next) {
   const body = interleave((n.photos || []).filter(p => p !== cover), (n.works || []).filter(w => w?.img))
     .map(b => b.shot ? shotHtml(b.shot) : `<div class="pair">${b.pair.map(pieceHtml).join('')}</div>`).join('');
 
-  /* 전시 정보: EN 을 고르면 영문 칸(titleEn, subEn …)을 쓰고, 비어 있으면 한국어 칸을 그대로 쓴다 */
+  /* 전시 정보: KR 은 한국어 칸만, EN 은 영문 칸(titleEn, subEn …)만 쓴다. 영문 칸이 비어 있으면 한국어 칸을 대신 쓴다 */
   const headHtml = code => {
     const en = code === 'en', pick = k => (en && n[k + 'En']?.trim()) || n[k];
     const info = ['period', 'closed', 'hours', 'venue'].map(pick).filter(Boolean).map(esc).join('<br>');
-    return `<p class="ty">${typeOf(n)}</p>
+    return `<p class="ty">${en ? typeOf(n) : esc(n.type || '')}</p>
       <h1>${esc(pick('title'))}</h1>
-      ${!en && n.titleEn ? `<p class="ten">${esc(n.titleEn)}</p>` : ''}
       ${pick('sub') ? `<p class="sub">${esc(pick('sub'))}</p>` : ''}
       ${info ? `<p class="info">${info}</p>` : ''}`;
   };

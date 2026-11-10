@@ -45,7 +45,13 @@ collections:
                 label_singular: 작품
                 summary: '{{fields.title}}'
                 fields: &workfields
-                  - { label: 사진, name: img, widget: image }
+                  - { label: 대표 사진, name: img, widget: image }
+                  - label: 추가 사진 (누르면 옆으로 넘겨 보는 사진)
+                    name: images
+                    widget: list
+                    required: false
+                    label_singular: 사진
+                    field: { label: 사진, name: image, widget: image }
                   - { label: 작품명, name: title, widget: string, required: false }
                   - { label: 재료, name: mat, widget: string, required: false }
                   - { label: 크기, name: size, widget: string, required: false }
@@ -64,8 +70,8 @@ collections:
                 summary: '{{fields.title}}'
                 fields: *workfields
 
-          # ===== 전시 (NEWS) =====
-          - label: 전시 (NEWS)
+          # ===== 전시 (EXHIBITIONS) — 데이터 이름은 예전 그대로 news =====
+          - label: 전시 (EXHIBITIONS)
             name: news
             widget: object
             collapsed: true
@@ -76,7 +82,10 @@ collections:
                 label_singular: 전시
                 summary: '{{fields.title}}'
                 fields:
-                  - { label: 포스터, name: poster, widget: image }
+                  - { label: 구분, name: type, widget: select, options: [개인전, 단체전, 아트페어, 기타], default: 단체전 }
+                  - { label: 연도, name: year, widget: string, required: false, hint: 비우면 전시일의 연도를 씁니다. 목록은 연도가 최근인 순서로 정렬됩니다. }
+                  - { label: 대표 이미지 (목록·상세 맨 위), name: cover, widget: image, required: false, hint: 비우면 전시 전경 첫 사진을 씁니다. 목록에서는 3:2 비율로 잘려 보입니다. }
+                  - { label: 포스터, name: poster, widget: image, required: false }
                   - { label: 전시명 (국문), name: title, widget: string }
                   - { label: 전시명 (영문), name: titleEn, widget: string, required: false }
                   - { label: 부제, name: sub, widget: string, required: false }
@@ -84,12 +93,24 @@ collections:
                   - { label: 휴무, name: closed, widget: string, required: false }
                   - { label: 관람시간, name: hours, widget: string, required: false }
                   - { label: 전시장, name: venue, widget: string, required: false }
-                  - { label: 소개 글, name: text, widget: text, required: false }
+                  - { label: 목록에 보일 장소, name: place, widget: string, required: false, hint: '예: 갤러리 완물, 서울. 비우면 전시장을 그대로 씁니다.' }
+                  - { label: 소개 글 (한국어), name: text, widget: text, required: false }
+                  - { label: 소개 글 (영문), name: textEn, widget: text, required: false, hint: 채우면 상세 화면에 EN / KO 전환 버튼이 생깁니다. }
                   - label: 전시 전경 사진
                     name: photos
                     widget: list
                     label_singular: 사진
                     field: { label: 사진, name: photo, widget: image }
+                  - label: 작품 이미지 (선택 · 작은 사각 액자와 캡션)
+                    name: works
+                    widget: list
+                    required: false
+                    label_singular: 작품
+                    summary: '{{fields.cap}}'
+                    hint: 비워 두면 전시 전경 사진만 보입니다. 채우면 전경 사진 사이에 두 장씩 작게 들어갑니다.
+                    fields:
+                      - { label: 사진, name: img, widget: image }
+                      - { label: 캡션, name: cap, widget: text, required: false }
 
           # ===== 소개 (ABOUT) =====
           - label: 소개 (ABOUT)
@@ -107,7 +128,7 @@ collections:
                     name: ko
                     widget: object
                     fields:
-                      - { label: 소개 글, name: statement, widget: text, required: false }
+                      - { label: 작가노트, name: statement, widget: text, required: false, hint: 사진과 이력 사이에 보입니다. 빈 줄로 문단을 나눕니다. }
                       - label: 개인전
                         name: solo
                         widget: list
@@ -132,7 +153,7 @@ collections:
                     name: en
                     widget: object
                     fields:
-                      - { label: 소개 글 (English), name: statement, widget: text, required: false }
+                      - { label: Artist Note (English), name: statement, widget: text, required: false }
                       - label: Solo Exhibitions
                         name: solo
                         widget: list

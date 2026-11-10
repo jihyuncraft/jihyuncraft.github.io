@@ -134,14 +134,21 @@ collections:
                     widget: object
                     fields:
                       - { label: 작가노트, name: statement, widget: text, required: false, hint: 사진과 이력 사이에 보입니다. 빈 줄로 문단을 나눕니다. }
+                      - label: 교육
+                        name: education
+                        widget: list
+                        label_singular: 이력
+                        summary: '{{fields.year}} {{fields.text}}'
+                        required: false
+                        fields: &cvfields
+                          - { label: 연도, name: year, widget: number, value_type: int }
+                          - { label: 내용, name: text, widget: string }
                       - label: 개인전
                         name: solo
                         widget: list
                         label_singular: 이력
                         summary: '{{fields.year}} {{fields.text}}'
-                        fields: &cvfields
-                          - { label: 연도, name: year, widget: number, value_type: int }
-                          - { label: 내용, name: text, widget: string }
+                        fields: *cvfields
                       - label: 단체전
                         name: group
                         widget: list
@@ -159,6 +166,13 @@ collections:
                     widget: object
                     fields:
                       - { label: Artist Note (English), name: statement, widget: text, required: false }
+                      - label: Education
+                        name: education
+                        widget: list
+                        label_singular: entry
+                        summary: '{{fields.year}} {{fields.text}}'
+                        required: false
+                        fields: *cvfields
                       - label: Solo Exhibitions
                         name: solo
                         widget: list

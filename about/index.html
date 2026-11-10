@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- 자동 생성 파일. 고치지 말고 index.html을 고친 뒤 node tools/build-pages.mjs 를 실행한다 -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ABOUT — KIM JI HYUN</title>
+<meta name="description" content="김지현 KIM JI HYUN 금속공예 작가 소개와 전시 이력.">
+<link rel="canonical" href="https://jihyunkimcraft.com/about/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KIM JI HYUN">
+<meta property="og:title" content="ABOUT — KIM JI HYUN">
+<meta property="og:description" content="김지현 KIM JI HYUN 금속공예 작가 소개와 전시 이력.">
+<meta property="og:url" content="https://jihyunkimcraft.com/about/">
+<meta property="og:image" content="https://jihyunkimcraft.com/images/about/ko.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"김지현","alternateName":"KIM JI HYUN","jobTitle":"Metal craft artist","url":"https://jihyunkimcraft.com/","sameAs":["https://www.instagram.com/j.i__h"]}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<meta name="theme-color" content="#efede7">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<noscript><p style="padding:24px">KIM JI HYUN 김지현, 금속공예. 이 사이트는 자바스크립트를 켜야 작품이 보입니다. Instagram @j.i__h</p></noscript>
+
+<header class="site">
+  <a class="logo" href="/">KIM JI HYUN</a>
+  <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav" aria-label="주 메뉴">
+    <ul>
+      <li><a href="/about/" data-k="about">ABOUT</a></li>
+      <li><a href="/works/objects/" data-k="works">WORKS</a>
+        <ul class="sub" id="navSub"></ul>
+      </li>
+      <li><a href="/exhibitions/" data-k="exhibitions">EXHIBITIONS</a></li>
+      <li><a href="/contact/" data-k="contact">CONTACT</a></li>
+    </ul>
+  </nav>
+  <svg class="plan" viewBox="0 0 132 84" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="34" cy="34" r="27"/><circle cx="72" cy="34" r="27"/><path d="M72 34h53v40H72z"/><path d="M34 7a27 27 0 0 0-19 46L34 34z" fill="currentColor" stroke="none"/></svg>
+</header>
+
+<main>
+  <section class="view home" id="v-home" aria-label="대표 작품"></section>
+
+  <section class="view" id="v-works" hidden>
+    <div class="cats" id="cats"></div>
+    <div class="works" id="worksList"></div>
+  </section>
+
+  <section class="view" id="v-exhibitions" hidden>
+    <div class="exlist" id="exList"></div>
+  </section>
+
+  <section class="view exd" id="v-exhibition" hidden></section>
+
+  <section class="view about" id="v-about" hidden>
+    <img id="aboutImg" alt="김지현 작업실">
+    <div class="langs" id="aboutLangs">
+      <button data-lang="ko">KO</button><button data-lang="en">EN</button>
+    </div>
+    <div id="aboutBody"></div>
+  </section>
+
+  <section class="view contact" id="v-contact" hidden>
+    <div class="row"><span class="k">EMAIL</span><a id="mail" href="#">&nbsp;</a></div>
+    <div class="row"><span class="k">INSTAGRAM</span><a id="insta" href="#" target="_blank" rel="noopener">&nbsp;</a></div>
+  </section>
+</main>
+
+<footer>
+  <div class="row">
+    <span>&copy; 2026 KIM JI HYUN</span>
+    <a id="footInsta" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a id="footMail" href="#" aria-label="이메일 보내기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.2"/><path d="M3.6 6.6 L12 12.6 L20.4 6.6"/></svg>
+    </a>
+  </div>
+  <p>본 사이트의 모든 작품 이미지와 글은 작가에게 저작권이 있으며 무단 사용을 금합니다.<br>
+  Unauthorized use of any image or text on this site is prohibited.</p>
+</footer>
+
+<div class="gal" id="gal" role="dialog" aria-modal="true" aria-label="크게 보기" hidden>
+  <div class="g-top">
+    <span class="g-count" id="gCount"></span>
+    <button class="g-close" id="gClose" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="g-track" id="gTrack"></div>
+  <button class="g-arrow g-prev" id="gPrev" aria-label="이전 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></button>
+  <button class="g-arrow g-next" id="gNext" aria-label="다음 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
+  <div class="g-cap" id="gCap"></div>
+</div>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

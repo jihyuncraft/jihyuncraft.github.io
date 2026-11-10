@@ -1,5 +1,5 @@
 /* 시작점. 내용은 content/site.json 에서 불러오고(관리 화면 /admin 이 편집), 화면 조립은 각 모듈이 맡는다. */
-import { $, $$ } from './util.js';
+import { $, $$, setSizes } from './util.js';
 import { CATS } from './constants.js';
 import { startRouter } from './router.js';
 import { createGallery } from './gallery.js';
@@ -12,12 +12,15 @@ let SITE;
 try { SITE = await (await fetch('/content/site.json?_=' + Date.now(), { cache: 'no-store' })).json(); }
 catch (e) { console.error('content/site.json 을 불러오지 못했습니다.', e); throw e; }
 
+/* 사진 크기표는 없어도 화면이 뜬다(자리만 미리 못 잡는다) */
+setSizes(await fetch('/content/sizes.json').then(r => r.ok ? r.json() : {}));
+
 const gallery = createGallery();
 const home = createHome($('#v-home'), SITE.home.images);
 
 /* 메뉴 */
-$('#navSub').innerHTML = CATS.map(c => `<li><a href="#/works/${c.id}" data-k="${c.id}">${c.label}</a></li>`).join('');
-$('#cats').innerHTML = CATS.map(c => `<a href="#/works/${c.id}" data-k="${c.id}">${c.label.toUpperCase()}</a>`).join('');
+$('#navSub').innerHTML = CATS.map(c => `<li><a href="/works/${c.id}/" data-k="${c.id}">${c.label}</a></li>`).join('');
+$('#cats').innerHTML = CATS.map(c => `<a href="/works/${c.id}/" data-k="${c.id}">${c.label.toUpperCase()}</a>`).join('');
 const burger = $('#burger');
 const setMenu = on => {
   document.body.classList.toggle('menu-open', on);

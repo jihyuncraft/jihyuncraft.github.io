@@ -14,8 +14,10 @@ export const paras = t => String(t || '').trim().split(/\n\s*\n/).filter(Boolean
   .map(p => `<p>${esc(p.trim()).replace(/\n/g, '<br>')}</p>`).join('');
 
 /* 사진 태그. 파일이 없으면 data-hide-broken 이 붙은 가장 가까운 묶음을 지운다 */
+let SIZES = {};
+export const setSizes = s => { SIZES = s; };
 export const img = (src, alt, eager = false) =>
-  `<img src="${url(src)}" alt="${esc(alt)}"${eager ? '' : ' loading="lazy"'} decoding="async" onerror="this.closest('[data-hide-broken]')?.remove()">`;
+  `<img src="${url(src)}" alt="${esc(alt)}"${SIZES[src] ? ` width="${SIZES[src][0]}" height="${SIZES[src][1]}"` : ''}${eager ? '' : ' loading="lazy"'} decoding="async" onerror="this.closest('[data-hide-broken]')?.remove()">`;
 
 /* 전시 연도: 입력한 연도가 없으면 전시일의 첫 네 자리 숫자 */
 export const yearOf = n => n.year || ((n.period || '').match(/\d{4}/) || [''])[0];

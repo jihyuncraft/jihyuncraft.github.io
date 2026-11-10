@@ -21,7 +21,7 @@ export function renderWorks(root, list, gallery, next) {
         ${spec ? `<span class="meta">${spec}</span>` : ''}
         ${n > 1 ? `<span class="cnt">${n} images</span>` : ''}</figcaption>
     </div></figure>`;
-  }).join('') + (next ? `<a class="next" href="#/works/${next.id}"><span>NEXT</span>${esc(next.label)}</a>` : '');
+  }).join('') + (next ? `<a class="next" href="/works/${next.id}/"><span>NEXT</span>${esc(next.label)}</a>` : '');
   root.onclick = e => {
     const b = e.target.closest('[data-w]'); if (!b) return;
     const w = list[+b.dataset.w], cap = workCaption(w);

@@ -30,7 +30,7 @@ export function nextExhibition(items, i) {
 export function renderExList(root, items) {
   const list = sortExhibitions(items);
   root.innerHTML = list.length ? list.map((n, k) => `
-    <a class="ex fi hov" href="#/exhibitions/${n._i}">
+    <a class="ex fi hov" href="/exhibitions/${n._i}/">
       <div class="ph frame">${img(coverOf(n), n.title, k === 0)}</div>
       <p class="cap"><span class="ty">${typeOf(n)}</span>
         <span class="ti">${esc(n.title)}${yearOf(n) ? `, ${esc(yearOf(n))}` : ''}</span>
@@ -60,7 +60,7 @@ export function renderExhibition(root, n, gallery, next) {
   const hasKo = !!n.text?.trim(), hasEn = !!n.textEn?.trim();
 
   root.innerHTML = `
-    <a class="back" href="#/exhibitions">EXHIBITIONS</a>
+    <a class="back" href="/exhibitions/">EXHIBITIONS</a>
     ${coverBtn}
     <div class="head">
       <p class="ty">${typeOf(n)}</p>
@@ -73,7 +73,7 @@ export function renderExhibition(root, n, gallery, next) {
     ${hasKo || hasEn ? `<div class="text" id="exText" lang="${hasKo ? 'ko' : 'en'}">${paras(hasKo ? n.text : n.textEn)}</div>` : ''}
     ${posterBtn}
     ${body ? `<div class="shots">${body}</div>` : ''}
-    ${next ? `<a class="next" href="#/exhibitions/${next._i}"><span>NEXT EXHIBITION</span>${esc(next.title)}</a>` : ''}`;
+    ${next ? `<a class="next" href="/exhibitions/${next._i}/"><span>NEXT EXHIBITION</span>${esc(next.title)}</a>` : ''}`;
 
   root.onclick = e => {
     const lb = e.target.closest('#exLangs button');

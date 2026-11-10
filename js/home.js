@@ -2,12 +2,14 @@
 import { img } from './util.js';
 
 export function createHome(root, images) {
-  root.innerHTML = images.map((s, i) => `<div class="slide${i ? '' : ' on'}">${img(s, 'KIM JI HYUN 작품', i === 0)}</div>`).join('');
-  const slides = [...root.children];
+  root.innerHTML = images.map((s, i) => `<div class="slide${i ? '' : ' on'}">${img(s, 'KIM JI HYUN 작품', i === 0)}</div>`).join('') +
+    (images.length > 1 ? '<p class="h-count" aria-hidden="true"></p>' : '');
+  const slides = [...root.querySelectorAll('.slide')], count = root.querySelector('.h-count');
+  const mark = () => { if (count) count.textContent = `${idx + 1} / ${slides.length}`; };
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
   let idx = 0, timer = null, startX = null;
 
-  const go = i => { slides[idx].classList.remove('on'); idx = (i + slides.length) % slides.length; slides[idx].classList.add('on'); };
+  const go = i => { slides[idx].classList.remove('on'); idx = (i + slides.length) % slides.length; slides[idx].classList.add('on'); mark(); };
   const play = on => {
     clearInterval(timer);
     if (on && !reduce && slides.length > 1) timer = setInterval(() => go(idx + 1), 5000);
@@ -20,5 +22,6 @@ export function createHome(root, images) {
     if (Math.abs(dx) > 40) { go(idx + (dx < 0 ? 1 : -1)); play(true); }
   });
 
+  mark();
   return { play };
 }

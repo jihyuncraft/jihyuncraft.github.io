@@ -11,6 +11,8 @@ export function createGallery(root = $('#gal')) {
     cap.innerHTML = items[idx].cap || '';
     count.textContent = items.length > 1 ? `${idx + 1} / ${items.length}` : '';
   };
+  /* 열려 있는 동안 뒤 화면은 키보드·낭독기가 닿지 않게 한다 */
+  const hold = on => document.querySelectorAll('body > :not(#gal)').forEach(el => { el.inert = on; });
   const step = d => track.scrollTo({ left: (idx + d) * track.clientWidth, behavior: 'smooth' });
 
   function open(list, i = 0) {
@@ -18,14 +20,14 @@ export function createGallery(root = $('#gal')) {
     items = list; lastFocus = document.activeElement;
     track.innerHTML = list.map((it, k) => `<div class="g-slide">${img(it.src, it.alt || '', Math.abs(k - i) < 2)}</div>`).join('');
     root.classList.toggle('multi', list.length > 1);
-    root.hidden = false; document.documentElement.style.overflow = 'hidden';
+    root.hidden = false; hold(true); document.documentElement.style.overflow = 'hidden';
     track.scrollLeft = i * track.clientWidth; show(i);
     history.pushState({ gal: 1 }, '');
     $('#gClose', root).focus();
   }
   function close(fromHistory = false) {
     if (root.hidden) return;
-    root.hidden = true; document.documentElement.style.overflow = '';
+    root.hidden = true; hold(false); document.documentElement.style.overflow = '';
     track.innerHTML = '';
     if (!fromHistory && history.state?.gal) history.back();
     lastFocus?.focus({ preventScroll: true });

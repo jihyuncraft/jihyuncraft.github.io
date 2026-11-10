@@ -5,7 +5,7 @@ import { startRouter } from './router.js';
 import { createGallery } from './gallery.js';
 import { createHome } from './home.js';
 import { renderWorks } from './works.js';
-import { renderExList, renderExhibition } from './exhibitions.js';
+import { renderExList, renderExhibition, nextExhibition } from './exhibitions.js';
 import { renderAbout } from './about.js';
 
 let SITE;
@@ -42,12 +42,12 @@ $$('#insta, #footInsta').forEach(a => { a.href = C.insta; });
 
 /* 화면 전환 */
 const renderers = {
-  works:      r => renderWorks($('#worksList'), SITE.works[r.arg] || [], gallery),
+  works:      r => renderWorks($('#worksList'), SITE.works[r.arg] || [], gallery, CATS[(CATS.findIndex(c => c.id === r.arg) + 1) % CATS.length]),
   exhibitions: () => renderExList($('#exList'), SITE.news.items),
   exhibition: r => {
     const n = SITE.news.items[+r.arg];
     if (!n) { location.hash = '#/exhibitions'; return; }
-    renderExhibition($('#v-exhibition'), n, gallery);
+    renderExhibition($('#v-exhibition'), n, gallery, nextExhibition(SITE.news.items, +r.arg));
   },
   about:      r => { aboutLang = r.arg; renderAbout($('#v-about'), SITE.about, aboutLang); }
 };
@@ -61,6 +61,8 @@ startRouter(r => {
   cls.toggle('in-works', r.page === 'works');
   home.play(r.view === 'home');
   renderers[r.view]?.(r);
+  const name = { works: CATS.find(c => c.id === r.arg)?.label, exhibition: SITE.news.items[+r.arg]?.title }[r.view] || (r.view === 'home' ? '' : r.page.toUpperCase());
+  document.title = name ? `${name} — KIM JI HYUN` : 'KIM JI HYUN — 금속공예';
 
   $$('.nav a, .cats a').forEach(a => {
     const on = a.dataset.k === r.page || (r.page === 'works' && a.dataset.k === r.arg);

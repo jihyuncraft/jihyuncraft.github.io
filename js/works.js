@@ -12,7 +12,7 @@ export function workCaption(w) {
 
 export const workImages = w => [w.img, ...(w.images || [])].filter(Boolean);
 
-export function renderWorks(root, list, gallery) {
+export function renderWorks(root, list, gallery, next) {
   root.innerHTML = list.map((w, i) => {
     const n = workImages(w).length, spec = specOf(w, ['year', 'mat', 'size']);
     return `<figure class="work fi" data-hide-broken><div class="hov">
@@ -21,7 +21,7 @@ export function renderWorks(root, list, gallery) {
         ${spec ? `<span class="meta">${spec}</span>` : ''}
         ${n > 1 ? `<span class="cnt">${n} images</span>` : ''}</figcaption>
     </div></figure>`;
-  }).join('');
+  }).join('') + (next ? `<a class="next" href="#/works/${next.id}"><span>NEXT</span>${esc(next.label)}</a>` : '');
   root.onclick = e => {
     const b = e.target.closest('[data-w]'); if (!b) return;
     const w = list[+b.dataset.w], cap = workCaption(w);

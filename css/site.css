@@ -101,6 +101,7 @@ html.js .fi.in{opacity:1;transform:none}
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   padding:calc(var(--head) + 12px) var(--pad) 40px;opacity:0;transition:opacity 1.2s var(--ease)}
 .slide.on{opacity:1}
+.h-count{position:absolute;right:var(--pad);bottom:28px;z-index:1;font-size:12px;letter-spacing:.12em;color:var(--mute);font-variant-numeric:tabular-nums}
 .slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none}
 
 /* WORKS: 한 줄로 이어지는 작품 */
@@ -110,6 +111,12 @@ html.js .fi.in{opacity:1;transform:none}
 .work .meta{display:block}
 .work .cnt{display:block;color:var(--lacquer);margin-top:4px}
 
+/* 목록·상세 끝에서 다음으로 이어 보기 */
+.next{display:block;font-size:14px;font-weight:500;line-height:1.6;padding:10px 0;transition:opacity .35s var(--ease)}
+.next span{display:block;font-size:12px;font-weight:400;letter-spacing:.12em;color:var(--mute)}
+.exd .next{margin-top:96px}
+@media (hover:hover){ .next:hover{opacity:.5} }
+
 /* EXHIBITIONS 목록: 같은 비율의 사진, 아래로 이어지는 스크롤 */
 .exlist{display:flex;flex-direction:column;gap:80px}
 .ex .frame{aspect-ratio:3/2;overflow:hidden}
@@ -117,7 +124,7 @@ html.js .fi.in{opacity:1;transform:none}
 .ex .cap{margin-top:14px;font-size:12.5px;line-height:1.76;letter-spacing:.02em;color:var(--soft)}
 .ex .ty{display:block;color:var(--lacquer)}
 .ex .ti{display:block;font-size:14px;font-weight:500;color:var(--ink)}
-.ex .ti .en{font-weight:400;color:var(--soft)}
+.ex .en{display:block}
 .empty{color:var(--mute)}
 
 /* 전시 상세 */

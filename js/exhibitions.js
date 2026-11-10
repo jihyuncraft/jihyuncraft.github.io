@@ -21,19 +21,26 @@ export function interleave(photos, works, size = 2) {
   return out;
 }
 
+/* 목록 순서에서 다음 전시(끝이면 처음으로). 전시가 하나뿐이면 없다 */
+export function nextExhibition(items, i) {
+  const list = sortExhibitions(items), k = list.findIndex(n => n._i === i);
+  return list.length > 1 && k >= 0 ? list[(k + 1) % list.length] : null;
+}
+
 export function renderExList(root, items) {
   const list = sortExhibitions(items);
   root.innerHTML = list.length ? list.map((n, k) => `
     <a class="ex fi hov" href="#/exhibitions/${n._i}">
       <div class="ph frame">${img(coverOf(n), n.title, k === 0)}</div>
       <p class="cap"><span class="ty">${typeOf(n)}</span>
-        <span class="ti">${esc(n.title)}${n.titleEn ? ` <span class="en">${esc(n.titleEn)}</span>` : ''}${yearOf(n) ? `, ${esc(yearOf(n))}` : ''}</span>
+        <span class="ti">${esc(n.title)}${yearOf(n) ? `, ${esc(yearOf(n))}` : ''}</span>
+        ${n.titleEn ? `<span class="en">${esc(n.titleEn)}</span>` : ''}
         <span>${esc(n.place || n.venue || '')}</span></p>
     </a>`).join('') : '<p class="empty">등록된 전시가 아직 없습니다.</p>';
   reveal(root);
 }
 
-export function renderExhibition(root, n, gallery) {
+export function renderExhibition(root, n, gallery, next) {
   const cover = coverOf(n);
   const shots = [];   // 이 화면의 사진을 화면 순서대로 크게 보기에 넣는다
   const add = (src, alt, capText = '') => shots.push({ src, alt, cap: capText ? `<div class="text">${paras(capText)}</div>` : '' }) - 1;
@@ -65,7 +72,8 @@ export function renderExhibition(root, n, gallery) {
     ${hasKo && hasEn ? `<div class="langs" id="exLangs"><button data-lang="en">EN</button><button data-lang="ko" class="on">KO</button></div>` : ''}
     ${hasKo || hasEn ? `<div class="text" id="exText" lang="${hasKo ? 'ko' : 'en'}">${paras(hasKo ? n.text : n.textEn)}</div>` : ''}
     ${posterBtn}
-    ${body ? `<div class="shots">${body}</div>` : ''}`;
+    ${body ? `<div class="shots">${body}</div>` : ''}
+    ${next ? `<a class="next" href="#/exhibitions/${next._i}"><span>NEXT EXHIBITION</span>${esc(next.title)}</a>` : ''}`;
 
   root.onclick = e => {
     const lb = e.target.closest('#exLangs button');

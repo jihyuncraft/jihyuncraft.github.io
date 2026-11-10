@@ -289,7 +289,12 @@
         "place": "갤러리 완물, 서울",
         "cover": "",
         "textEn": "I like to be placed in front of simple architecture. Walking one wide circle around it, I discover unfamiliar places that could not be seen from the front and observe the relationships between forms. A white wall that meets the straight road in a curve, a long horizontal ribbon window, pilotis that give a sense of space, a finder that cuts across the air. I absorb my impression of that space and make it my own. Drawing the memories gathered this way into simple geometric forms, I made vessels within the scope of expressing a sense of space.",
-        "works": []
+        "works": [],
+        "subEn": "The First Solo Exhibition",
+        "periodEn": "30 November (Wed) – 13 December (Tue), 2022",
+        "closedEn": "Closed on Sundays and Mondays",
+        "hoursEn": "",
+        "venueEn": "Gallery Wannmul, 2F, 9 Samseong-ro 141-gil, Gangnam-gu, Seoul"
       },
       {
         "poster": "/images/2026윤생1.jpg",
@@ -323,7 +328,12 @@
         "place": "엘케이트 갤러리, 서울",
         "cover": "",
         "textEn": "",
-        "works": []
+        "works": [],
+        "subEn": "",
+        "periodEn": "",
+        "closedEn": "",
+        "hoursEn": "",
+        "venueEn": ""
       },
       {
         "poster": "/images/dubai-2026/poster.jpg",
@@ -365,7 +375,12 @@
             "img": "/images/dubai-2026/work-2.jpg",
             "cap": ""
           }
-        ]
+        ],
+        "subEn": "",
+        "periodEn": "",
+        "closedEn": "",
+        "hoursEn": "",
+        "venueEn": ""
       }
     ]
   },

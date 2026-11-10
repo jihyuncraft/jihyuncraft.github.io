@@ -95,7 +95,12 @@ collections:
                   - { label: 전시장, name: venue, widget: string, required: false }
                   - { label: 목록에 보일 장소, name: place, widget: string, required: false, hint: '예: 갤러리 완물, 서울. 비우면 전시장을 그대로 씁니다.' }
                   - { label: 소개 글 (한국어), name: text, widget: text, required: false }
-                  - { label: 소개 글 (영문), name: textEn, widget: text, required: false, hint: 채운 언어만 상세 화면에 언어 버튼이 생깁니다. }
+                  - { label: 소개 글 (영문), name: textEn, widget: text, required: false, hint: 채우면 소개 글 아래에 KR / EN 버튼이 생깁니다. EN을 누르면 아래 영문 칸들도 함께 바뀌고, 비워 둔 칸은 한국어 그대로 보입니다. }
+                  - { label: 부제 (영문), name: subEn, widget: string, required: false }
+                  - { label: 전시일 (영문), name: periodEn, widget: string, required: false }
+                  - { label: 휴무 (영문), name: closedEn, widget: string, required: false }
+                  - { label: 관람시간 (영문), name: hoursEn, widget: string, required: false }
+                  - { label: 전시장 (영문), name: venueEn, widget: string, required: false }
                   - label: 전시 전경 사진
                     name: photos
                     widget: list

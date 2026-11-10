@@ -2,11 +2,11 @@
 import { esc, img, paras } from './util.js';
 import { reveal } from './reveal.js';
 
-const specs = (w, order) => order.map(k => w[k]).filter(Boolean).map(esc);
-const specOf = (w, order) => specs(w, order).join('<br>');
+/* 캡션 줄: 재료 → 크기, 연도 */
+const specs = w => [w.mat, [w.size, w.year].filter(Boolean).join(', ')].filter(Boolean).map(esc);
 
 export function workCaption(w) {
-  const spec = specOf(w, ['mat', 'size', 'year']);
+  const spec = specs(w).join('<br>');
   return (w.title ? `<b>${esc(w.title)}</b>` : '') + (spec ? `<span>${spec}</span>` : '') +
     (w.desc ? `<div class="text">${paras(w.desc)}</div>` : '');
 }
@@ -15,7 +15,7 @@ export const workImages = w => [w.img, ...(w.images || [])].filter(Boolean);
 
 export function renderWorks(root, list, gallery, next) {
   root.innerHTML = list.map((w, i) => {
-    const n = workImages(w).length, spec = specs(w, ['year', 'mat', 'size']).map(t => `<span>${t}</span>`).join('');
+    const n = workImages(w).length, spec = specs(w).map(t => `<span>${t}</span>`).join('');
     return `<figure class="work fi" data-hide-broken><div class="hov">
       <button class="ph" data-w="${i}" aria-label="${esc(w.title || '작품')} 크게 보기">${img(w.img, w.title || `작품 ${i + 1}`, i === 0)}</button>
       <figcaption>${w.title ? `<button class="tl" data-w="${i}">${esc(w.title)}</button>` : ''}

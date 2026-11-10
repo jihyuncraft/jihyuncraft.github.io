@@ -43,22 +43,19 @@ $$('#insta, #footInstaText').forEach(el => { el.textContent = C.instaHandle; });
 $$('#mail, #footMail').forEach(a => { a.href = 'mail' + 'to:' + mail; });
 $$('#insta, #footInsta').forEach(a => { a.href = C.insta; });
 
-/* 화면 이름: 브라우저 탭 제목과 본문 맨 위 제목(전시 상세는 자기 제목이 따로 있다) */
+/* 화면 이름: 브라우저 탭 제목 */
 const PAGE_NAMES = { about: 'About', exhibitions: 'Exhibitions', contact: 'Contact' };
 function setTitle(r) {
   const name = r.view === 'works' ? CATS.find(c => c.id === r.arg).label
     : r.view === 'exhibition' ? SITE.news.items[+r.arg]?.title
     : PAGE_NAMES[r.view];
   document.title = name ? `${name} — KIM JI HYUN` : 'KIM JI HYUN — 금속공예';
-  const h = $('#pageTitle');
-  h.hidden = !name || r.view === 'exhibition';
-  h.textContent = name || '';
 }
 
 /* 화면 전환 */
 const renderers = {
   works:      r => renderWorks($('#worksList'), SITE.works[r.arg] || [], gallery, CATS[(CATS.findIndex(c => c.id === r.arg) + 1) % CATS.length]),
-  exhibitions: () => renderExList($('#exList'), SITE.news.items),
+  exhibitions: () => renderExList($('#exList'), SITE.news.items, $('#exFilter')),
   exhibition: r => {
     const n = SITE.news.items[+r.arg];
     if (!n) { location.hash = '#/exhibitions'; return; }

@@ -485,70 +485,96 @@
       },
       "en": {
         "statement": "",
+        "education": [
+          {
+            "year": 2020,
+            "text": "M.F.A., Department of Metal Craft, Graduate School, Kookmin University"
+          },
+          {
+            "year": 2017,
+            "text": "B.F.A., Department of Digital Craft, College of Arts, Dongduk Women's University"
+          }
+        ],
         "solo": [
           {
+            "year": 2026,
+            "text": "Touching Spaces, YEOL Bukchon House, Seoul"
+          },
+          {
             "year": 2022,
-            "text": "Solo Exhibition ‘Small Architecture’, Gallery Wannmul, Seoul"
+            "text": "Small Architecture, Gallery Wannmul, Seoul"
           }
         ],
         "group": [
           {
             "year": 2026,
-            "text": "TALENTE, International Trade Fair for Handicraft / Munich, Germany"
+            "text": "Yunsaeng Project 10 — Dealing with the Flow of Water, Lkate Gallery, Seoul"
           },
           {
             "year": 2026,
-            "text": "‘Craft in Transformation’, Korean Craft Exhibition in Dubai / Double J Collective Gallery, Dubai"
+            "text": "TALENTE, International Trade Fair for Handicraft, Munich, Germany"
+          },
+          {
+            "year": 2026,
+            "text": "KOREA NOW and Here Dubai — Craft in Transformation, Double J Collective Gallery, Dubai"
           },
           {
             "year": 2025,
-            "text": "Craft Trend Fair, Special Exhibition ‘The Next : Tomorrow’s Future’ / COEX Hall A, Seoul"
+            "text": "Craft Trend Fair, Special Exhibition The Next: Tomorrow's Future, COEX Hall A, Seoul"
           },
           {
             "year": 2025,
-            "text": "‘Building Worlds’, Cheongju Craft Biennale International Competition Award Exhibition / Culture Factory Main Gallery, Cheongju"
+            "text": "Building Worlds, Cheongju Craft Biennale International Competition Award Exhibition, Culture Factory Main Gallery, Cheongju"
           },
           {
             "year": 2025,
-            "text": "‘CRAFT ID’, Sikgijang 21st Anniversary Exhibition / Gallery Wannmul, Seoul"
+            "text": "CRAFT ID, Sikgijang 21st Anniversary Exhibition, Gallery Wannmul, Seoul"
           },
           {
             "year": 2024,
-            "text": "‘Past and Present’, Metal 3rd Group 40th Anniversary Exhibition / Kyung-in Museum of Fine Art, Seoul"
+            "text": "Past and Present, Metal 3rd Group 40th Anniversary Exhibition, Kyung-in Museum of Fine Art, Seoul"
           },
           {
             "year": 2023,
-            "text": "‘Map of Objects’, Cheongju Craft Biennale Competition / Culture Factory Main Gallery, Cheongju"
+            "text": "Map of Objects, Cheongju Craft Biennale International Competition Exhibition, Culture Factory Main Gallery, Cheongju"
           },
           {
             "year": 2023,
-            "text": "‘To Busan’, Metal 3rd Group 38th Exhibition / Busan Jung-gu Cultural Center, Busan"
+            "text": "To Busan, Metal 3rd Group 38th Annual Exhibition, Busan Jung-gu Cultural Center, Busan"
           },
           {
             "year": 2021,
-            "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall C, Seoul"
+            "text": "Craft Trend Fair, Craft Studio Hall, COEX Hall C, Seoul"
           },
           {
             "year": 2021,
-            "text": "Craft Trend Fair, Theme Exhibition ‘Hyeong-hyeong Saek-saek’ / COEX Hall C, Seoul"
+            "text": "Craft Trend Fair, Theme Exhibition 形形色色 Hyeong-hyeong Saek-saek, COEX Hall C, Seoul"
           },
           {
             "year": 2021,
-            "text": "Korea Cultural Heritage Foundation, Intangible Cultural Heritage & Contemporary Craft Artists / Incheon Airport, Incheon"
+            "text": "Intangible Cultural Heritage & Contemporary Craft Artists, Korea Cultural Heritage Foundation, Incheon Airport, Incheon"
           },
           {
             "year": 2020,
-            "text": "Collect Art Fair (Wannmul) / Saatchi Gallery, London"
+            "text": "Collect International Art Fair (Wannmul), Saatchi Gallery, London"
           },
           {
             "year": 2019,
-            "text": "Craft Trend Fair, Craft Studio Hall / COEX Hall A, Seoul"
+            "text": "Craft Trend Fair, Craft Studio Hall, COEX Hall A, Seoul"
           }
         ],
         "awards": [
           {
             "year": 2025,
             "text": "Cheongju International Craft Biennale, Selected"
+          },
+          {
+            "year": 2023,
+            "text": "Cheongju International Craft Biennale, Selected"
+          },
+          {
+            "year": 2019,
+            "text": "Iksan Korea Craft Competition, Selected"
           }
         ]
       }

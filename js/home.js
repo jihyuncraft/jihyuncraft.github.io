@@ -4,15 +4,15 @@ import { img } from './util.js';
 
 const INTERVAL = 5000;
 
-/* 작품의 평면도에서 가져온 선: 겹친 두 원통, 바닥 판, 중심선, 눈금. pathLength=1 은 그려지는 효과용 */
+/* 작품의 평면도에서 가져온 선: 겹친 두 원통, 바닥 판, 중심선, 눈금. */
 const DRAFT = `<svg class="draft" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g>
-  <path class="d1" pathLength="1" d="M0 470H1440"/>
-  <path class="d1" pathLength="1" d="M720 0V900"/>
-  <circle class="d2" pathLength="1" cx="590" cy="470" r="262"/>
-  <circle class="d2" pathLength="1" cx="850" cy="470" r="262"/>
-  <path class="d3" pathLength="1" d="M850 470H1250V790H850Z"/>
-  <path class="d3" pathLength="1" d="M590 208L404 656"/>
-  <path class="d3" pathLength="1" d="M440 840v-14M500 840v-8M560 840v-8M620 840v-8M680 840v-8M740 840v-14M800 840v-8M860 840v-8M920 840v-8M980 840v-8M1040 840v-14M440 840H1040"/>
+  <path class="d1" d="M0 470H1440"/>
+  <path class="d1" d="M720 0V900"/>
+  <circle class="d2" cx="590" cy="470" r="262"/>
+  <circle class="d2" cx="850" cy="470" r="262"/>
+  <path class="d3" d="M850 470H1250V790H850Z"/>
+  <path class="d3" d="M590 208L404 656"/>
+  <path class="d3" d="M440 840v-14M500 840v-8M560 840v-8M620 840v-8M680 840v-8M740 840v-14M800 840v-8M860 840v-8M920 840v-8M980 840v-8M1040 840v-14M440 840H1040"/>
 </g></svg>`;
 
 export function createHome(root, images) {

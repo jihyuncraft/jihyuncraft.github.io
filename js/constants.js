@@ -12,3 +12,11 @@ export const CV_LABELS = {
   ko: { note: '작가노트', solo: '개인전', group: '단체전', awards: '수상' },
   en: { note: 'Artist Note', solo: 'Solo Exhibitions', group: 'Group Exhibitions', awards: 'Award' }
 };
+
+/* 전시 소개 글 언어: [언어 코드, site.json 항목, 버튼 글자]. 글이 채워진 언어만 버튼이 나온다 */
+export const EX_LANGS = [
+  ['ko', 'text', '한국어'],
+  ['en', 'textEn', 'English'],
+  ['ja', 'textJa', '日本語'],
+  ['zh-Hans', 'textZh', '中文']
+];

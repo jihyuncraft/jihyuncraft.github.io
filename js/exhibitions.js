@@ -1,6 +1,6 @@
-/* EXHIBITIONS: 목록(구분 탭, 사진은 원래 비율)과 상세(대표 이미지 → 정보 → 소개 글 EN/KO → 포스터 → 전경 + 선택 작품 액자). */
+/* EXHIBITIONS: 목록(구분 탭, 사진은 원래 비율)과 상세(대표 이미지 → 정보 → 소개 글 한국어/English/日本語/中文 → 포스터 → 전경 + 선택 작품 액자). */
 import { $, esc, img, paras, yearOf } from './util.js';
-import { TYPE_EN } from './constants.js';
+import { TYPE_EN, EX_LANGS } from './constants.js';
 import { reveal } from './reveal.js';
 
 export const coverOf = n => n.cover || (n.photos || [])[0] || n.poster;
@@ -15,6 +15,9 @@ export const sortExhibitions = items => items.map((n, i) => ({ ...n, _i: i }))
 
 /* 구분 탭: solo 는 개인전만, group 은 개인전이 아닌 것(단체전·아트페어) */
 export const filterExhibitions = (list, filter) => list.filter(n => filter === 'all' || isSolo(n) === (filter === 'solo'));
+
+/* 소개 글이 채워진 언어만: [{ code, label, text }] */
+export const exLangs = n => EX_LANGS.filter(([, key]) => n[key]?.trim()).map(([code, key, label]) => ({ code, label, text: n[key] }));
 
 /* 전경 사진 한 장마다 작품 액자 두 개씩 끼우고, 남은 액자는 끝에 둔다 */
 export function interleave(photos, works, size = 2) {
@@ -66,7 +69,7 @@ export function renderExhibition(root, n, gallery, next) {
     .map(b => b.shot ? shotHtml(b.shot) : `<div class="pair">${b.pair.map(pieceHtml).join('')}</div>`).join('');
 
   const info = [n.period, n.closed, n.hours, n.venue].filter(Boolean).map(esc).join('<br>');
-  const hasKo = !!n.text?.trim(), hasEn = !!n.textEn?.trim();
+  const langs = exLangs(n);
 
   root.innerHTML = `
     <a class="back" href="/exhibitions/">EXHIBITIONS</a>
@@ -78,8 +81,9 @@ export function renderExhibition(root, n, gallery, next) {
       ${n.sub ? `<p class="sub">${esc(n.sub)}</p>` : ''}
       ${info ? `<p class="info">${info}</p>` : ''}
     </div>
-    ${hasKo && hasEn ? `<div class="langs" id="exLangs"><button data-lang="en">EN</button><button data-lang="ko" class="on">KO</button></div>` : ''}
-    ${hasKo || hasEn ? `<div class="text" id="exText" lang="${hasKo ? 'ko' : 'en'}">${paras(hasKo ? n.text : n.textEn)}</div>` : ''}
+    ${langs.length > 1 ? `<div class="langs" id="exLangs">${langs.map((l, k) =>
+      `<button type="button" data-lang="${k}" lang="${l.code}" class="${k ? '' : 'on'}" aria-pressed="${!k}">${l.label}</button>`).join('')}</div>` : ''}
+    ${langs.length ? `<div class="text" id="exText" lang="${langs[0].code}">${paras(langs[0].text)}</div>` : ''}
     ${posterBtn}
     ${body ? `<div class="shots">${body}</div>` : ''}
     ${next ? `<a class="next" href="/exhibitions/${next._i}/"><span>Next exhibition</span>${esc(next.title)}</a>` : ''}`;
@@ -87,9 +91,9 @@ export function renderExhibition(root, n, gallery, next) {
   root.onclick = e => {
     const lb = e.target.closest('#exLangs button');
     if (lb) {
-      const t = $('#exText', root), l = lb.dataset.lang;
-      t.innerHTML = paras(l === 'en' ? n.textEn : n.text); t.lang = l;
-      root.querySelectorAll('#exLangs button').forEach(b => b.classList.toggle('on', b === lb));
+      const t = $('#exText', root), l = langs[+lb.dataset.lang];
+      t.innerHTML = paras(l.text); t.lang = l.code;
+      root.querySelectorAll('#exLangs button').forEach(b => { b.classList.toggle('on', b === lb); b.setAttribute('aria-pressed', b === lb); });
       return;
     }
     const b = e.target.closest('[data-g]');

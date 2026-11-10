@@ -18,8 +18,8 @@ const DRAFT = `<svg class="draft" viewBox="0 0 1440 900" preserveAspectRatio="xM
 export function createHome(root, images) {
   const many = images.length > 1;
   root.innerHTML = DRAFT +
-    images.map((s, i) => `<div class="slide${i ? '' : ' on'}">${img(s, 'KIM JI HYUN 작품', i === 0)}</div>`).join('') +
-    `<div class="h-bar"><span class="cr">&copy; KIM JI HYUN</span>${many
+    images.map((s, i) => `<div class="slide${i ? '' : ' on'}">${img(s, 'Jihyun Kim 작품', i === 0)}</div>`).join('') +
+    `<div class="h-bar"><span class="cr">&copy; JIHYUN KIM</span>${many
       ? '<button class="h-pause" type="button"></button><span class="h-count" aria-hidden="true"></span>' : ''}</div>`;
   const slides = [...root.querySelectorAll('.slide')];
   const draft = root.querySelector('.draft'), lines = draft.firstElementChild;

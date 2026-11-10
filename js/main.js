@@ -49,7 +49,7 @@ function setTitle(r) {
   const name = r.view === 'works' ? CATS.find(c => c.id === r.arg).label
     : r.view === 'exhibition' ? SITE.news.items[+r.arg]?.title
     : PAGE_NAMES[r.view];
-  document.title = name ? `${name} — KIM JI HYUN` : 'KIM JI HYUN — 금속공예';
+  document.title = name ? `${name} — Jihyun Kim` : '김지현 | Jihyun Kim — 금속공예';
 }
 
 /* 화면 전환 */

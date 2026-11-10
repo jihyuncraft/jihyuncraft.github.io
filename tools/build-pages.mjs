@@ -35,17 +35,17 @@ writeFileSync(join(ROOT, 'content/sizes.json'), JSON.stringify(sizes));
 /* ---------- 화면별 페이지 ---------- */
 const titles = list => list.map(w => w.title).filter(Boolean).slice(0, 8).join(', ');
 const pages = [
-  { path: 'about', title: 'ABOUT', desc: '김지현 KIM JI HYUN 금속공예 작가 소개와 전시 이력.', image: site.about.imageKo },
+  { path: 'about', title: 'ABOUT', desc: '김지현 | Jihyun Kim 금속공예 작가 소개와 전시 이력.', image: site.about.imageKo },
   ...CATS.map(c => ({ path: `works/${c.id}`, title: c.label, desc: `${c.label}: ${titles(site.works[c.id] || [])}`, image: site.works[c.id]?.[0]?.img })),
   { path: 'exhibitions', title: 'EXHIBITIONS', desc: site.news.items.map(n => `${n.title} ${yearOf(n)}`).join(', '), image: coverOf(site.news.items[0] || {}) },
   // ponytail: 전시 주소는 관리 화면의 순서 번호. 중간에 끼워 넣으면 번호가 밀리므로 새 전시는 맨 아래에 추가한다.
   ...site.news.items.map((n, i) => ({ path: `exhibitions/${i}`, title: n.title,
     desc: [TYPE_EN[n.type] || n.type, n.titleEn, n.period, n.place || n.venue].filter(Boolean).join(' / '), image: coverOf(n) })),
-  { path: 'contact', title: 'CONTACT', desc: '김지현 KIM JI HYUN 연락처: 이메일, 인스타그램.' }
+  { path: 'contact', title: 'CONTACT', desc: '김지현 | Jihyun Kim 연락처: 이메일, 인스타그램.' }
 ];
 
 const meta = (html, p) => {
-  const title = esc(`${p.title} — KIM JI HYUN`), desc = esc(p.desc), url = `${ORIGIN}/${p.path}/`;
+  const title = esc(`${p.title} — Jihyun Kim`), desc = esc(p.desc), url = `${ORIGIN}/${p.path}/`;
   const set = (re, v) => { if (!re.test(html)) throw new Error('index.html에서 못 찾음: ' + re); html = html.replace(re, v); };
   set(/<title>.*?<\/title>/, `<title>${title}</title>`);
   set(/(<meta name="description" content=")[^"]*/, `$1${desc}`);

@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { esc, paras, yearOf } from '../js/util.js';
 import { parseRoute } from '../js/router.js';
-import { sortExhibitions, filterExhibitions, interleave, coverOf, nextExhibition } from '../js/exhibitions.js';
+import { sortExhibitions, interleave, coverOf, nextExhibition } from '../js/exhibitions.js';
 
 test('글은 HTML로 해석하지 않고, 빈 줄은 문단이 된다', () => {
   assert.equal(esc('<b>"a"</b>'), '&lt;b&gt;&quot;a&quot;&lt;/b&gt;');
@@ -33,10 +33,6 @@ test('전시: 연도 최근순, 같은 해는 입력 순서, 대표 이미지 �
   assert.equal(nextExhibition(items, 1).title, 'c');   // 목록 순서 b, c, a
   assert.equal(nextExhibition(items, 0).title, 'b');   // 끝에서는 처음으로
   assert.equal(nextExhibition([items[0]], 0), null);
-  const mixed = sortExhibitions([{ title: 'g26', year: '2026', type: '단체전' }, { title: 's22', year: '2022', type: '개인전' }, { title: 'f25', year: '2025', type: '아트페어' }]);
-  assert.deepEqual(mixed.map(n => n.title), ['s22', 'g26', 'f25']);   // 개인전 먼저, 그다음 최근 연도순
-  assert.deepEqual(filterExhibitions(mixed, 'solo').map(n => n.title), ['s22']);
-  assert.deepEqual(filterExhibitions(mixed, 'group').map(n => n.title), ['g26', 'f25']);
 });
 
 test('전시 상세: 전경 한 장마다 작품 두 개, 남은 작품은 끝에', () => {

@@ -66,10 +66,9 @@ body.menu-open .nav{opacity:1;visibility:visible}
 .nav a[data-k=hap]::before{border-radius:1.5px}
 .nav a[data-k=tangram]::before{--dot:#c79a3b;clip-path:polygon(0 100%,100% 100%,0 0)}
 
-/* 작가의 시그니처 도장. 노트북 화면 왼쪽 아래에만 둔다. 황동색이라 밝은 바탕과 검은 하단 위에서 모두 보인다 */
-.plan{display:none;position:absolute;left:var(--pad);bottom:50px;width:96px;height:auto;color:var(--brass)}
-.plan path{stroke-width:1.4}
-.plan *,.draft *{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+/* 작품의 평면도 문양(겹친 두 원통과 판). 노트북 화면 왼쪽 아래에만 둔다. 황동색이라 밝은 바탕과 검은 하단 위에서 모두 보인다 */
+.plan{display:none;position:absolute;left:var(--pad);bottom:50px;width:132px;height:auto;color:var(--brass)}
+.draft *{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
 
 /* ---------- 본문 공통 ---------- */
 main{padding:8px var(--pad) 0}
@@ -107,11 +106,9 @@ html.js .fi.in{opacity:1;transform:none}
 .langs button.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--lacquer);text-underline-offset:5px}
 .langs + .text{margin-top:0}
 
-/* ---------- HOME: 도면 선이 그려지고, 그 위에 작품 사진이 차례로 바뀐다 ----------
-   --mx, --my 는 마우스 위치(-1~1). 사진과 도면이 서로 반대로 조금 움직여 깊이가 생긴다 */
-.home{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg);--mx:0;--my:0}   /* 바탕색이 여기 있어야 곱하기가 먹는다 */
-.draft{position:absolute;inset:-3%;width:106%;height:106%;color:var(--brass);opacity:.6;
-  transform:translate3d(calc(var(--mx) * 16px),calc(var(--my) * 10px),0);transition:transform .6s var(--ease)}
+/* ---------- HOME: 도면 선이 그려지고, 그 위에 작품 사진이 차례로 바뀐다 ---------- */
+.home{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--bg)}   /* 바탕색이 여기 있어야 곱하기가 먹는다 */
+.draft{position:absolute;inset:0;width:100%;height:100%;color:var(--brass);opacity:.6}
 /* 선 굵기를 화면 1px로 고정하면 점선 길이도 화면 px 기준이 된다. 어떤 선보다 긴 6000px 점선을 밀어서 그린다 */
 .draft *{stroke-dasharray:6000;stroke-dashoffset:6000}
 .draft.draw *{animation:draw 4s linear forwards}
@@ -121,8 +118,7 @@ html.js .fi.in{opacity:1;transform:none}
 /* 사진 묶음째 곱하기: 흰 배경이 사라지고 도장 선이 작품 뒤로 비친다 */
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;mix-blend-mode:multiply;
   padding:calc(var(--head) + 12px) var(--pad) 64px;opacity:0;
-  transform:translate3d(calc(var(--mx) * -12px),calc(var(--my) * -8px),0);
-  transition:opacity 1.2s var(--ease),transform .6s var(--ease)}
+  transition:opacity 1.2s var(--ease)}
 .slide.on{opacity:1}
 /* 가장자리를 흐려 색 배경 사진도 네모가 보이지 않는다 */
 .slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none;

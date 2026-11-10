@@ -1,5 +1,5 @@
 /* 첫 화면: 도면 선이 그려지고, 그 위에 작품 사진이 5초마다 저절로 바뀐다.
-   손으로 밀어 넘기거나 멈춤 버튼으로 세울 수 있고, 마우스를 움직이면 사진과 도면이 조금씩 어긋나 깊이가 생긴다. */
+   손으로 밀어 넘기거나 멈춤 버튼으로 세울 수 있다. */
 import { img } from './util.js';
 
 const INTERVAL = 5000;
@@ -58,12 +58,6 @@ export function createHome(root, images) {
     if (startX === null) return;
     const dx = e.clientX - startX; startX = null;
     if (Math.abs(dx) > 40) { go(idx + (dx < 0 ? 1 : -1)); run(); }
-  });
-  /* 마우스 위치를 -1~1 로 넘긴다(터치에서는 움직이지 않는다) */
-  root.addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse') return;
-    root.style.setProperty('--mx', (e.clientX / innerWidth * 2 - 1).toFixed(3));
-    root.style.setProperty('--my', (e.clientY / innerHeight * 2 - 1).toFixed(3));
   });
 
   label();

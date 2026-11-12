@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://jihyunkimcraft.com/</loc></url>
   <url><loc>https://jihyunkimcraft.com/about/</loc></url>
+  <url><loc>https://jihyunkimcraft.com/works/vessels/</loc></url>
   <url><loc>https://jihyunkimcraft.com/works/objects/</loc></url>
   <url><loc>https://jihyunkimcraft.com/works/hap/</loc></url>
   <url><loc>https://jihyunkimcraft.com/works/tangram/</loc></url>
@@ -9,5 +10,6 @@
   <url><loc>https://jihyunkimcraft.com/exhibitions/0/</loc></url>
   <url><loc>https://jihyunkimcraft.com/exhibitions/1/</loc></url>
   <url><loc>https://jihyunkimcraft.com/exhibitions/2/</loc></url>
+  <url><loc>https://jihyunkimcraft.com/exhibitions/3/</loc></url>
   <url><loc>https://jihyunkimcraft.com/contact/</loc></url>
 </urlset>

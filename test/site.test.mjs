@@ -10,9 +10,9 @@ test('글은 HTML로 해석하지 않고, 빈 줄은 문단이 된다', () => {
   assert.equal(paras('첫 줄\n둘째 줄\n\n새 문단'), '<p>첫 줄<br>둘째 줄</p><p>새 문단</p>');
 });
 
-test('주소 해석: 없는 분류는 Objects, 예전 news 주소는 전시로', () => {
+test('주소 해석: 없는 분류는 첫 분류(Vessels), 예전 news 주소는 전시로', () => {
   assert.deepEqual(parseRoute('#/works/hap'), { view: 'works', page: 'works', arg: 'hap', key: 'works/hap' });
-  assert.equal(parseRoute('#/works/zzz').arg, 'objects');
+  assert.equal(parseRoute('#/works/zzz').arg, 'vessels');
   assert.equal(parseRoute('/works/tangram/').key, 'works/tangram');
   assert.equal(parseRoute('/exhibitions/2/').view, 'exhibition');
   assert.equal(parseRoute('/').view, 'home');

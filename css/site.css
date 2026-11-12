@@ -62,7 +62,8 @@ body.menu-open .nav{opacity:1;visibility:visible}
 .nav a[data-k=works]::before{--dot:var(--brass)}
 .nav a[data-k=exhibitions]::before{--dot:#2f6f73;border-radius:7px 7px 0 0;height:4px;margin-top:-2px}
 .nav a[data-k=contact]::before{--dot:#c98a7d;border-radius:100% 0 0 0}
-.nav a[data-k=objects]::before{--dot:var(--brass);height:3px;margin-top:-1px}
+.nav a[data-k=vessels]::before{--dot:var(--brass);height:3px;margin-top:-1px}
+.nav a[data-k=objects]::before{--dot:var(--brass)}
 .nav a[data-k=hap]::before{border-radius:1.5px}
 .nav a[data-k=tangram]::before{--dot:#c79a3b;clip-path:polygon(0 100%,100% 100%,0 0)}
 
@@ -153,7 +154,7 @@ html.js .fi.in{opacity:1;transform:none}
 .exd .sub{font-size:13px;color:var(--soft);margin-top:6px}
 .exd .info{margin-top:18px;font-size:13px;line-height:1.9;color:var(--soft)}
 .exd .text{margin-top:30px}
-.poster{width:62%;margin-top:48px}
+.poster{margin-top:48px}
 .shots{display:flex;flex-direction:column;gap:32px;margin-top:48px}
 .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:10%;row-gap:32px;padding:0 5%}
 .pair .frame{aspect-ratio:4/5;overflow:hidden}

@@ -39,8 +39,8 @@ collections:
             widget: object
             collapsed: true
             fields:
-              - label: OBJECTS
-                name: objects
+              - label: VESSELS
+                name: vessels
                 widget: list
                 label_singular: 작품
                 summary: '{{fields.title}}'
@@ -57,6 +57,12 @@ collections:
                   - { label: 크기, name: size, widget: string, required: false }
                   - { label: 연도, name: year, widget: string, required: false }
                   - { label: 설명, name: desc, widget: text, required: false }
+              - label: OBJECTS
+                name: objects
+                widget: list
+                label_singular: 작품
+                summary: '{{fields.title}}'
+                fields: *workfields
               - label: HAP SERIES
                 name: hap
                 widget: list

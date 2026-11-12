@@ -1,6 +1,7 @@
 /* 화면 이름표. 작품 분류를 늘리려면 CATS에 한 줄, admin/config.yml 과 content/site.json 에 같은 id를 더한다. */
 
 export const CATS = [
+  { id: 'vessels', label: 'Vessels' },
   { id: 'objects', label: 'Objects' },
   { id: 'hap',     label: 'Hap Series' },
   { id: 'tangram', label: 'Tangram Series' }

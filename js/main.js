@@ -30,7 +30,7 @@ const setMenu = on => {
 burger.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
 
 /* ABOUT 언어 */
-let aboutLang = 'ko';
+let aboutLang = 'en';   // 작가 요청(2026-11-12): 영문이 먼저 보인다
 $('#aboutLangs').onclick = e => {
   const b = e.target.closest('button'); if (!b) return;
   aboutLang = b.dataset.lang; renderAbout($('#v-about'), SITE.about, aboutLang);

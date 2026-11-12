@@ -7,7 +7,7 @@
     ]
   },
   "works": {
-    "objects": [
+    "vessels": [
       {
         "img": "/images/objects/01.jpg",
         "title": "BalanceⅢ",
@@ -200,6 +200,26 @@
         ]
       }
     ],
+    "objects": [
+      {
+        "img": "/images/spaces-in-contact/2.jpg",
+        "title": "Spaces in Contact II",
+        "mat": "cupro-nickel",
+        "size": "27.5 x 12 x h16.2cm",
+        "year": "2026",
+        "desc": "",
+        "images": []
+      },
+      {
+        "img": "/images/spaces-in-contact/1.jpg",
+        "title": "Spaces in Contact I",
+        "mat": "Brass, Ottchil-natural lacquer",
+        "size": "18 x 9.5 x h26cm",
+        "year": "2026",
+        "desc": "",
+        "images": []
+      }
+    ],
     "hap": [
       {
         "img": "/images/hap/1.jpg",
@@ -373,7 +393,7 @@
           },
           {
             "img": "/images/dubai-2026/work-2.jpg",
-            "cap": ""
+            "cap": "Ellipse 2, 2023\ncupro-nickel, Walnut, Ottchil-natural lacquer\nH22 x 24 x 28 cm"
           }
         ],
         "subEn": "",
@@ -381,6 +401,39 @@
         "closedEn": "",
         "hoursEn": "",
         "venueEn": ""
+      },
+      {
+        "poster": "/images/talente-2026/poster.jpg",
+        "title": "TALENTE 2026",
+        "titleEn": "",
+        "sub": "",
+        "period": "2026.03.04 (수) – 2026.03.08 (일)",
+        "closed": "",
+        "hours": "",
+        "venue": "Internationale Handwerksmesse, 뮌헨, 독일",
+        "text": "기물은 무언가를 담을 수 있는 사물로, 실용적 가치와 미적 가치를 동시에 지니며 일상생활과 밀접하게 연결되어 있다. 그러나 김지현의 관심은 여기에서 더 나아간다. 작가는 기물이 단순히 무언가를 담는 기능적 역할을 넘어, 자신의 감각과 의도를 반영하는 매개체가 되기를 바란다.\n\n작가의 금속 기물은 단순한 기하학적 형태를 바탕으로 만들어지며, 주변 공간과 관계를 맺는다. 각각의 형태는 독립적으로 존재하면서도 동시에 전체의 구조적 균형을 이루는 데 기여한다. 김지현은 형태의 변화를 통해 시각적 긴장감을 만들어내고, 대칭적인 구성을 통해 안정감 속에 리듬감을 형성하고자 한다.\n\n건축적 구조는 형태 사이의 관계를 통해 공간을 확장하고 시각적 질서를 만들어내는 구성 요소로 작용한다. 작가는 형태에 대한 깊은 탐구를 통해 차분하고 고요한 분위기를 만들어낸다.\n\n작업은 마치 종이를 다루듯 금속판을 자르고, 구부리고, 이어 붙이는 과정에서 시작된다. 이러한 방식은 하나의 기물 안에서 서로 다른 형태들이 맞물리도록 하며, 미묘한 조형적 변화를 드러낸다. 또한 보는 이의 시점에 따라 서로 다른 공간적 분위기를 느낄 수 있도록 한다.\n\n작가는 표현하고자 하는 색과 형태, 분위기에 따라 기물의 내부에 전통적인 한국의 옻칠을 적용한다. 생칠이나 색을 더한 옻칠을 여러 차례 바르고 연마하며 표면을 매끄럽게 다듬는 과정을 통해, 금속의 질감과 조화를 이루는 깊고 은은한 색감과 자연스러운 광택을 강조한다.\n\n작가에게 이러한 반복적인 과정은 단순한 마감 기법이 아니라, 재료와 시간을 매개로 이루어지는 사유의 행위이기도 하다. 또한 아크릴 요소에도 옻칠을 적용하여 시각적 통일감과 깊이를 더한다.",
+        "photos": [
+          "/images/talente-2026/01.jpg",
+          "/images/talente-2026/02.jpg",
+          "/images/talente-2026/03.jpg",
+          "/images/talente-2026/04.jpg",
+          "/images/talente-2026/05.jpg",
+          "/images/talente-2026/06.jpg",
+          "/images/talente-2026/07.jpg",
+          "/images/talente-2026/08.jpg",
+          "/images/talente-2026/10.jpg"
+        ],
+        "type": "단체전",
+        "year": "2026",
+        "place": "Internationale Handwerksmesse, 뮌헨",
+        "cover": "/images/talente-2026/poster.jpg",
+        "textEn": "Vessels – objects that can contain something – have both practical and aesthetic value and are closely associated with everyday life. However, Ji Hyun Kim’s concern goes further, as she wants vessels that go beyond their functional role as mere containers and become media that reflect her own sensibility and intention. Her metal vessels are created based on simple geometric forms and are connected to their spatial surroundings. Each form exists independently, but at the same time contributes to the structural balance of the whole. Through variations, Ji Hyun Kim attempts to create visual tension, while symmetrical compositions create a sense of rhythm within stability. Architectural structures act as compositional elements that expand the space and create visual order through the relationships between forms. She focuses intensively on the contemplation of forms, creating a sense of calm.\n\nHer work starts with the cutting, bending and joining of metal sheets – much as if she were working with paper. This approach allows different shapes to interlock within a single vessel, revealing subtle sculptural transitions and allowing viewers to perceive varying spatial atmospheres according to their perspective. Depending on the colour, shape and atmosphere she wants to convey, she applies ottchil (traditional Korean lacquer) to the inside of the vessel. By repeatedly applying, polishing and smoothing layers of raw or tinted lacquer, the deep, subtle colour tones and natural lustre that harmonise with the texture of the metal are emphasised. For her, this repetitive process is not just a finishing technique, but an act of contemplation, mediated by material and time. The lacquer is also applied to the acrylic elements to achieve visual coherence and depth.",
+        "works": [],
+        "subEn": "",
+        "periodEn": "4 March (Wed) – 8 March (Sun), 2026",
+        "closedEn": "",
+        "hoursEn": "",
+        "venueEn": "Internationale Handwerksmesse, Munich, Germany"
       }
     ]
   },
@@ -498,7 +551,7 @@
         "solo": [
           {
             "year": 2026,
-            "text": "Touching Spaces, YEOL Bukchon House, Seoul"
+            "text": "Spaces in Contact, YEOL Bukchon House, Seoul"
           },
           {
             "year": 2022,

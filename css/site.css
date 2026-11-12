@@ -180,7 +180,6 @@ footer .links{display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;margin-t
 footer .links a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ivory)}
 footer .links a:hover{text-decoration:underline;text-underline-offset:4px}
 footer svg{width:18px;height:18px;flex:none}
-footer .en{margin-top:10px;font-size:12px}
 body.is-home footer{display:none}
 
 /* ---------- 크게 보기: 옆으로 넘기는 사진 ---------- */
